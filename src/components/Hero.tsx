@@ -25,11 +25,18 @@ export default function Hero({
   ctaHref,
 }: HeroProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const mobileRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
+
+  const mobileScroll = useScroll({
+    target: mobileRef,
+    offset: ["start start", "end start"],
+  });
+  const mobileProgress = mobileScroll.scrollYProgress;
 
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
   const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
@@ -39,10 +46,15 @@ export default function Hero({
   const morphProgress = useTransform(scrollYProgress, [0, 0.3, 0.6], [0, 0.5, 1]);
   const showVideo = useTransform(scrollYProgress, [0.5, 0.7], [0, 1]);
 
+  const mobileMorph = useTransform(mobileProgress, [0, 1], [0, 1]);
+
   return (
     <>
       {/* MOBILE HERO */}
-      <section className="relative flex h-svh min-h-[100svh] items-end overflow-hidden md:hidden">
+      <section
+        ref={mobileRef}
+        className="relative flex h-[200svh] items-end overflow-hidden md:hidden"
+      >
         <div className="absolute inset-0 -z-10">
           <img
             src={mobileImages[0]}
@@ -50,24 +62,42 @@ export default function Hero({
             className="h-full w-full object-cover"
           />
         </div>
+
+        {mobileImages.length > 1 && (
+          <motion.div
+            className="absolute inset-0 -z-10"
+            style={{ opacity: mobileMorph }}
+          >
+            <img
+              src={mobileImages[1]}
+              alt=""
+              className="h-full w-full object-cover"
+            />
+          </motion.div>
+        )}
+
         <div className="scrim-gold pointer-events-none absolute inset-0 -z-10" />
+        <motion.div
+          className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-charcoal/30 to-charcoal/80"
+          style={{ opacity: mobileMorph }}
+        />
 
         <div className="relative z-10 flex w-full flex-col gap-4 p-5 pb-10">
           <p className="font-display text-[10px] font-light uppercase tracking-[0.3em] text-gold">
             {title}
           </p>
 
-          <h1 className="font-display text-5xl leading-[0.9] tracking-tight text-charcoal max-w-[85vw]">
+          <h1 className="font-display text-5xl leading-[0.9] tracking-tight text-white max-w-[85vw]">
             {name}
           </h1>
 
-          <p className="max-w-[80vw] text-xs leading-relaxed text-muted">
+          <p className="max-w-[80vw] text-xs leading-relaxed text-white/80">
             {tagline}
           </p>
 
           <a
             href={ctaHref}
-            className="inline-flex h-12 w-full items-center justify-center rounded-sm bg-charcoal px-6 text-center font-display text-base font-bold tracking-wide text-white shadow-lg active:scale-[0.97]"
+            className="inline-flex h-12 w-full items-center justify-center rounded-sm bg-gold px-6 text-center font-display text-base font-bold tracking-wide text-charcoal shadow-lg active:scale-[0.97]"
           >
             {ctaLabel}
           </a>

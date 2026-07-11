@@ -178,7 +178,7 @@ export default function Home() {
       </div>
 
       <div className="snap-section">
-        <RecordSection stats={stats} />
+        <RecordSection stats={stats} mobileBgImage={heroMobileImages[1]} />
       </div>
 
       <div className="snap-section">
