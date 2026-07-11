@@ -37,7 +37,6 @@ body {
   }
   .snap-section {
     scroll-snap-align: start;
-    min-height: 100dvh;
   }
 }
 

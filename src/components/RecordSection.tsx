@@ -70,8 +70,8 @@ export default function RecordSection({ stats, mobileBgImage }: RecordSectionPro
             <div className="absolute inset-0 bg-charcoal/60" />
           </>
         )}
-        <div className="relative z-10 px-6 py-16">
-          <div className="flex min-h-[80dvh] flex-col justify-center">
+        <div className="relative z-10 px-6 py-12">
+          <div className="flex flex-col justify-center">
             <div className="mb-10">
               <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-white">
                 The Leader
