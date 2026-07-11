@@ -1,29 +1,55 @@
+import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import StatStrip from "@/components/StatStrip";
-import EngagementGallery from "@/components/EngagementGallery";
-import VideoModule from "@/components/VideoModule";
-import TeaserCard from "@/components/TeaserCard";
+import RecordSection from "@/components/RecordSection";
+import GallerySection from "@/components/GallerySection";
+import VideoSection from "@/components/VideoSection";
+import LiveTicker from "@/components/LiveTicker";
+import WhistleblowerSection from "@/components/WhistleblowerSection";
 import Footer from "@/components/Footer";
 
 /*
-  PLACEHOLDER DATA — Replace these arrays/objects with real data from CMS or API.
-  - image1: a well-lit environmental portrait (campaign-era)
-  - image2: a current in-office/constituency photo
-  - stats: real verified numbers from the office
-  - gallery photos: real constituency event photos with honest captions
-  - videos: unscripted interview/event clips, vertical 9:16 preferred
+  PLACEHOLDER DATA — Replace with real images, stats, and copy from the MP's office.
+  - heroImages[0]: high-quality environmental portrait (campaign-era, well-lit, confident)
+  - heroImages[1]: current in-office or constituency photo (crossfade target)
+  - heroVideo: optional vertical clip for the scroll-reveal video layer
+  - stats: verified numbers from the office
+  - galleryPhotos: real constituency photos with honest captions
+  - videos: unscripted clips, 9:16 vertical preferred
+  - socialFeeds: direct links to social platforms
 */
 
-const heroImages = {
-  image1: "/images/placeholder-hero-1.jpg",
-  image2: "/images/placeholder-hero-2.jpg",
-};
+const heroImages = [
+  "/images/placeholder-hero-1.jpg",
+  "/images/placeholder-hero-2.jpg",
+];
+
+const heroVideo = "";
 
 const stats = [
-  { label: "Projects Delivered", value: "—", description: "Track record since 2022" },
-  { label: "Manifesto Complete", value: "—", description: "Against 2022 pledges" },
-  { label: "Youth Programs", value: "—", description: "Bursaries & skills training" },
-  { label: "Public Forums", value: "—", description: "Town halls & barazas held" },
+  {
+    label: "Projects Delivered",
+    value: "—",
+    description: "Infrastructure, water, education & health projects completed since 2022",
+    progress: 0,
+  },
+  {
+    label: "Manifesto Progress",
+    value: "—",
+    description: "Of 2022 campaign pledges tracked and verified",
+    progress: 0,
+  },
+  {
+    label: "Youth Supported",
+    value: "—",
+    description: "Bursaries, skills training & empowerment programs",
+    progress: 0,
+  },
+  {
+    label: "Town Halls Held",
+    value: "—",
+    description: "Public barazas, constituency forums & feedback sessions",
+    progress: 0,
+  },
 ];
 
 const galleryPhotos = [
@@ -33,22 +59,20 @@ const galleryPhotos = [
     caption: "Youth leadership forum at Manyatta Technical Institute",
     location: "Manyatta Technical Institute",
     date: "Mar 2025",
-    rows: 2 as const,
   },
   {
     id: "2",
     src: "/images/placeholder-gallery-2.jpg",
-    caption: "Bursary disbursement day — over 200 students supported",
+    caption: "Bursary disbursement — over 200 students supported",
     location: "Embu Town",
     date: "Feb 2025",
   },
   {
     id: "3",
     src: "/images/placeholder-gallery-3.jpg",
-    caption: "Market walk with traders — real talk on business challenges",
+    caption: "Market walk with traders discussing business challenges",
     location: "Manyatta Market",
     date: "Jan 2025",
-    cols: 2 as const,
   },
   {
     id: "4",
@@ -67,15 +91,14 @@ const galleryPhotos = [
   {
     id: "6",
     src: "/images/placeholder-gallery-6.jpg",
-    caption: "Constituents queue for free medical camp",
+    caption: "Free medical camp — hundreds of constituents served",
     location: "Kavutiri",
     date: "Oct 2024",
-    rows: 2 as const,
   },
   {
     id: "7",
     src: "/images/placeholder-gallery-7.jpg",
-    caption: "Meeting with women's chama groups on economic empowerment",
+    caption: "Women's chama groups meeting on economic empowerment",
     location: "Embu Town",
     date: "Sep 2024",
   },
@@ -87,14 +110,18 @@ const videos = [
     poster: "/images/placeholder-video-poster-1.jpg",
     title: "On youth unemployment — unscripted",
     description:
-      "A young constituent asks about job creation and Mukunji responds, no script, no spin. Recorded at a town hall in Manyatta, January 2025.",
+      "A young constituent asks about job creation. Mukunji responds, no script, no spin. Recorded at a town hall in Manyatta.",
+    location: "Manyatta Town Hall",
+    date: "Jan 2025",
   },
   {
     src: "/videos/placeholder-video-2.mp4",
     poster: "/images/placeholder-video-poster-2.jpg",
     title: "Bursary day — the real work",
     description:
-      "Behind the scenes at a bursary disbursement. No staging, just the queue, the families, and the process. February 2025.",
+      "Behind the scenes at a bursary disbursement. No staging, just the queue, the families, and the process.",
+    location: "Embu Town",
+    date: "Feb 2025",
   },
   {
     src: "/videos/placeholder-video-3.mp4",
@@ -102,10 +129,20 @@ const videos = [
     title: "Roads or water? A constituent demands answers",
     description:
       "A resident holds the MP to account on delayed projects. This is what accountability looks like in real time.",
+    location: "Nguviu",
+    date: "Nov 2024",
   },
 ];
 
-const socialLinks = [
+const socialFeeds = [
+  { platform: "facebook" as const, label: "Facebook", href: "#", isLive: false },
+  { platform: "x" as const, label: "X (Twitter)", href: "#", isLive: false },
+  { platform: "instagram" as const, label: "Instagram", href: "#", isLive: false },
+  { platform: "tiktok" as const, label: "TikTok", href: "#", isLive: false },
+  { platform: "youtube" as const, label: "YouTube", href: "#", isLive: false },
+];
+
+const footerLinks = [
   { label: "X", href: "#" },
   { label: "Instagram", href: "#" },
   { label: "Facebook", href: "#" },
@@ -117,51 +154,25 @@ const socialLinks = [
 export default function Home() {
   return (
     <>
+      <Navbar />
       <Hero
-        image1={heroImages.image1}
-        image2={heroImages.image2}
+        images={heroImages}
+        video={heroVideo || undefined}
         name="Gitonga Mukunji"
         title="MP, Manyatta Constituency"
         tagline="Track every promise. Every project. Every voice."
-        ctaLabel="See the scorecard"
-        ctaHref="/scorecard"
-        secondaryLabel="Report an issue"
-        secondaryHref="/report"
-        isLive={false}
+        ctaLabel="View the scorecard"
+        ctaHref="#record"
       />
-
-      <StatStrip stats={stats} />
-
-      <EngagementGallery photos={galleryPhotos} />
-
-      <VideoModule videos={videos} />
-
-      <section className="bg-cream-light py-16 sm:py-20">
-        <div className="mx-auto max-w-6xl px-6 sm:px-10">
-          <div className="grid gap-6 sm:grid-cols-2">
-            <TeaserCard
-              title="Manifesto Tracker"
-              description="Every promise made in 2022, tracked publicly. See what's been delivered, what's in progress, and what's behind schedule."
-              href="/manifesto"
-              cta="View the tracker"
-              accent="amber"
-            />
-            <TeaserCard
-              title="Report an Issue"
-              description="Spot a broken road, a stalled project, or a service gap? Flag it directly — every report is logged and followed up."
-              href="/report"
-              cta="Raise an issue"
-              accent="green"
-            />
-          </div>
-        </div>
-      </section>
-
+      <RecordSection stats={stats} />
+      <GallerySection photos={galleryPhotos} />
+      <VideoSection videos={videos} />
+      <LiveTicker feeds={socialFeeds} />
+      <WhistleblowerSection />
       <Footer
-        socialLinks={socialLinks}
+        socialLinks={footerLinks}
         email="placeholder@gitongamukunji.com"
         phone="+254 7XX XXX XXX"
-        constituencyOffice="Manyatta Constituency Office, Embu"
       />
     </>
   );

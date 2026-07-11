@@ -1,0 +1,153 @@
+"use client";
+
+import { useRef, useState, useEffect, useCallback } from "react";
+import { motion } from "framer-motion";
+
+interface VideoItem {
+  src: string;
+  poster?: string;
+  title: string;
+  description: string;
+  location?: string;
+  date?: string;
+}
+
+interface VideoSectionProps {
+  videos: VideoItem[];
+}
+
+function VideoCard({ video, index }: { video: VideoItem; index: number }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [muted, setMuted] = useState(true);
+  const [playing, setPlaying] = useState(false);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { rootMargin: "-80px 0px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const vid = videoRef.current;
+    if (!vid) return;
+    if (inView) {
+      vid.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+    } else {
+      vid.pause();
+      setPlaying(false);
+    }
+  }, [inView]);
+
+  const toggleMute = useCallback(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setMuted(videoRef.current.muted);
+    }
+  }, []);
+
+  const isReversed = index % 2 !== 0;
+
+  return (
+    <motion.div
+      ref={containerRef}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.7 }}
+      className={`flex flex-col gap-8 lg:flex-row lg:items-center ${
+        isReversed ? "lg:flex-row-reverse" : ""
+      }`}
+    >
+      <div className="relative aspect-[9/16] w-full max-w-sm shrink-0 overflow-hidden rounded-sm bg-stone shadow-2xl sm:mx-auto lg:mx-0">
+        <video
+          ref={videoRef}
+          src={video.src}
+          poster={video.poster}
+          muted={muted}
+          loop
+          playsInline
+          className="h-full w-full object-cover"
+        />
+
+        <div className="absolute bottom-3 left-3 flex items-center gap-2">
+          <button
+            onClick={toggleMute}
+            className="flex h-9 w-9 items-center justify-center rounded-sm bg-night/60 text-warm-white backdrop-blur-sm transition-colors hover:bg-night/80"
+            aria-label={muted ? "Unmute" : "Mute"}
+          >
+            {muted ? (
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                <line x1="23" y1="9" x2="17" y2="15" />
+                <line x1="17" y1="9" x2="23" y2="15" />
+              </svg>
+            ) : (
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+              </svg>
+            )}
+          </button>
+          {playing && (
+            <span className="rounded-sm bg-gold/90 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-night">
+              Playing
+            </span>
+          )}
+        </div>
+      </div>
+
+      <div className={`flex-1 ${isReversed ? "lg:text-right" : ""}`}>
+        <p className="mb-2 text-xs uppercase tracking-[0.2em] text-gold">
+          {video.date && `${video.date} — `}Unscripted
+        </p>
+        <h3 className="font-display text-2xl leading-tight sm:text-3xl">
+          {video.title}
+        </h3>
+        <p className="mt-4 max-w-md text-base leading-relaxed text-warm-muted">
+          {video.description}
+        </p>
+        {video.location && (
+          <p className="mt-3 text-sm text-warm-muted/60">
+            {video.location}
+          </p>
+        )}
+      </div>
+    </motion.div>
+  );
+}
+
+export default function VideoSection({ videos }: VideoSectionProps) {
+  if (!videos.length) return null;
+
+  return (
+    <section className="border-t border-stone/30 bg-night">
+      <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
+        <div className="mb-14 sm:mb-20">
+          <p className="mb-3 font-display text-xs font-light uppercase tracking-[0.25em] text-gold">
+            Chapter 04
+          </p>
+          <h2 className="font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+            Unscripted
+          </h2>
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-warm-muted sm:text-lg">
+            Real conversations, raw moments. No scripts, no spin — just the
+            work and the people behind it.
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-16 sm:gap-24">
+          {videos.map((video, i) => (
+            <VideoCard key={i} video={video} index={i} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

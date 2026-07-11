@@ -1,52 +1,44 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import LiveIndicator from "./LiveIndicator";
 
 interface HeroProps {
-  image1: string;
-  image2: string;
+  images: string[];
+  video?: string;
   name: string;
   title: string;
   tagline: string;
   ctaLabel: string;
   ctaHref: string;
-  secondaryLabel: string;
-  secondaryHref: string;
-  isLive?: boolean;
-  livePlatform?: string;
-  liveHref?: string;
 }
 
 export default function Hero({
-  image1,
-  image2,
+  images,
+  video,
   name,
   title,
   tagline,
   ctaLabel,
   ctaHref,
-  secondaryLabel,
-  secondaryHref,
-  isLive = false,
-  livePlatform,
-  liveHref,
 }: HeroProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
-  const imageY = useTransform(scrollYProgress, [0, 1], [0, 80]);
-  const opacity1 = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
-  const opacity2 = useTransform(scrollYProgress, [0, 0.4], [0, 1]);
-  const overlayOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0.92]);
-  const contentY = useTransform(scrollYProgress, [0, 0.6], [0, -30]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.18]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0.4]);
+  const textY = useTransform(scrollYProgress, [0, 0.5], [0, -40]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.6]);
+
+  const morphProgress = useTransform(scrollYProgress, [0, 0.3, 0.6], [0, 0.5, 1]);
+
+  const showVideo = useTransform(scrollYProgress, [0.5, 0.7], [0, 1]);
 
   return (
     <section
@@ -56,109 +48,128 @@ export default function Hero({
       <div className="absolute inset-0 -z-10">
         <motion.div
           className="absolute inset-0"
-          style={{ scale, y: imageY, opacity: opacity1 }}
+          style={{ scale, y, opacity }}
         >
-          <Image
-            src={image1}
+          <img
+            src={images[0]}
             alt=""
-            fill
-            className="object-cover"
-            priority
-            sizes="100vw"
+            className="h-full w-full object-cover"
           />
         </motion.div>
-        <motion.div
-          className="absolute inset-0"
-          style={{ scale, y: imageY, opacity: opacity2 }}
-        >
-          <Image
-            src={image2}
-            alt=""
-            fill
-            className="object-cover"
-            priority
-            sizes="100vw"
-          />
-        </motion.div>
-      </div>
 
-      <motion.div
-        className="scrim-hero pointer-events-none absolute inset-0 -z-10"
-        style={{ opacity: overlayOpacity }}
-      />
-
-      <motion.div
-        className="relative z-10 flex w-full flex-col gap-5 p-6 pb-10 sm:p-10 lg:p-16"
-        style={{ y: contentY }}
-      >
-        {isLive && (
-          <div className="pointer-events-auto mb-1">
-            <LiveIndicator
-              isLive={isLive}
-              platform={livePlatform}
-              href={liveHref}
+        {images.length > 1 && (
+          <motion.div
+            className="absolute inset-0"
+            style={{
+              scale,
+              y,
+              opacity: morphProgress,
+            }}
+          >
+            <img
+              src={images[1]}
+              alt=""
+              className="h-full w-full object-cover"
             />
-          </div>
+          </motion.div>
         )}
 
-        <div className="max-w-2xl">
-          <h1 className="font-display text-4xl leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-            {name}
-          </h1>
-          <p className="mt-2 font-display text-lg font-light text-white/80 sm:text-xl md:text-2xl">
+        {video && (
+          <motion.div
+            className="absolute inset-0"
+            style={{ opacity: showVideo }}
+          >
+            <video
+              ref={videoRef}
+              src={video}
+              muted
+              loop
+              playsInline
+              className="h-full w-full object-cover"
+            />
+          </motion.div>
+        )}
+      </div>
+
+      <div className="scrim-dark pointer-events-none absolute inset-0 -z-10" />
+
+      <motion.div
+        className="relative z-10 flex w-full flex-col gap-6 p-6 pb-12 sm:p-12 lg:p-16"
+        style={{ y: textY, opacity: textOpacity }}
+      >
+        <div className="max-w-3xl">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-2 font-display text-sm font-light uppercase tracking-[0.3em] text-gold sm:text-base"
+          >
             {title}
-          </p>
+          </motion.p>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="font-display text-5xl leading-[0.95] tracking-tight text-warm-white sm:text-7xl md:text-8xl lg:text-9xl"
+          >
+            {name}
+          </motion.h1>
         </div>
 
-        <p className="max-w-lg text-base text-white/90 sm:text-lg md:text-xl">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="max-w-lg text-base leading-relaxed text-warm-white/80 sm:text-lg md:text-xl"
+        >
           {tagline}
-        </p>
+        </motion.p>
 
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="flex flex-col gap-4 sm:flex-row sm:items-center"
+        >
           <a
             href={ctaHref}
-            className="inline-flex h-12 min-h-[44px] items-center justify-center rounded-lg bg-amber px-7 text-center text-base font-semibold text-charcoal shadow-sm transition-all active:scale-[0.97] sm:h-13 sm:px-8 hover:bg-amber-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber"
+            className="inline-flex h-13 min-h-[48px] items-center justify-center rounded-sm bg-gold px-8 text-center text-sm font-semibold uppercase tracking-widest text-night transition-all active:scale-[0.97] hover:bg-gold-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
           >
             {ctaLabel}
           </a>
-          <a
-            href={secondaryHref}
-            className="inline-flex h-12 min-h-[44px] items-center justify-center rounded-lg border border-white/25 px-6 text-center text-sm font-medium text-white/90 transition-colors hover:border-white/50 hover:text-white sm:h-13 sm:px-7 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-          >
-            {secondaryLabel}
-          </a>
-        </div>
+        </motion.div>
       </motion.div>
 
       <motion.div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 pb-4"
-        style={{ opacity: useTransform(scrollYProgress, [0, 0.1], [1, 0]) }}
+        className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2"
+        style={{ opacity: useTransform(scrollYProgress, [0, 0.12], [1, 0]) }}
       >
         <motion.svg
-          width="20"
-          height="30"
-          viewBox="0 0 20 30"
+          width="24"
+          height="36"
+          viewBox="0 0 24 36"
           fill="none"
-          className="text-white/60"
+          className="text-warm-white/40"
           animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
         >
           <rect
-            x="1.5"
-            y="1.5"
-            width="17"
-            height="27"
-            rx="8.5"
+            x="2"
+            y="2"
+            width="20"
+            height="32"
+            rx="10"
             stroke="currentColor"
             strokeWidth="2"
           />
           <motion.circle
-            cx="10"
-            cy="10"
-            r="2.5"
+            cx="12"
+            cy="12"
+            r="3"
             fill="currentColor"
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
           />
         </motion.svg>
       </motion.div>

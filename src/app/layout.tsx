@@ -15,15 +15,15 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Gitonga Mukunji — MP, Manyatta Constituency",
+  title: "Gitonga Mukunji — Manyatta Constituency",
   description:
-    "Track every promise. Every project. Every voice. The official civic engagement site for Gitonga Mukunji, Member of Parliament for Manyatta Constituency, Embu County.",
+    "The official website of Gitonga Mukunji, Member of Parliament for Manyatta Constituency, Embu County. Track the record, follow the work, raise your voice.",
   openGraph: {
     title: "Gitonga Mukunji — Manyatta Constituency",
-    description:
-      "Track every promise. Every project. Every voice.",
+    description: "Track the record. Follow the work. Raise your voice.",
     type: "website",
     locale: "en_KE",
+    siteName: "Gitonga Mukunji",
   },
 };
 
@@ -37,7 +37,7 @@ export default function RootLayout({
       lang="en"
       className={`${fraunces.variable} ${inter.variable} scroll-smooth`}
     >
-      <body className="min-h-dvh flex flex-col bg-cream-light text-charcoal font-body antialiased">
+      <body className="min-h-dvh flex flex-col bg-night text-warm-white font-body antialiased selection:bg-gold/30 selection:text-warm-white">
         {children}
       </body>
     </html>
