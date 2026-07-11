@@ -4,11 +4,13 @@
   --font-display: var(--font-fraunces), serif;
   --font-body: var(--font-inter), sans-serif;
 
-  --color-night: #0F0E0C;
+  --color-pearl: #FAF8F5;
+  --color-pearl-light: #FDFCFA;
+  --color-white: #FFFFFF;
   --color-charcoal: #1A1815;
-  --color-stone: #2A2722;
-  --color-warm-white: #F5F0EB;
-  --color-warm-muted: #9C968F;
+  --color-stone: #E2DDD6;
+  --color-stone-light: #F0EDE8;
+  --color-warm-muted: #6B6560;
   --color-gold: #D4A853;
   --color-gold-light: #E8C97A;
   --color-gold-dark: #B8892F;
@@ -20,49 +22,51 @@ html {
 }
 
 body {
-  background-color: var(--color-night);
-  color: var(--color-warm-white);
+  background-color: var(--color-pearl);
+  color: var(--color-charcoal);
   font-family: var(--font-body), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(212, 168, 83, 0.25);
+  color: var(--color-charcoal);
 }
 
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-night);
+  background: var(--color-pearl);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--color-stone);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-gold-dark);
+  background: var(--color-gold);
 }
 
 @layer utilities {
-  .scrim-dark {
+  .scrim-hero {
     background: linear-gradient(
       to bottom,
-      transparent 0%,
-      transparent 40%,
-      rgba(15, 14, 12, 0.6) 70%,
-      rgba(15, 14, 12, 0.95) 100%
+      rgba(250, 248, 245, 0) 0%,
+      rgba(250, 248, 245, 0.15) 40%,
+      rgba(250, 248, 245, 0.75) 70%,
+      rgba(250, 248, 245, 0.95) 100%
     );
   }
-  .scrim-light {
+  .scrim-gallery {
     background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(245, 240, 235, 0.9) 100%
+      to top,
+      rgba(26, 24, 21, 0.85) 0%,
+      transparent 100%
     );
   }
   .text-balance {
     text-wrap: balance;
-  }
-  .chapter-number {
-    font-feature-settings: "ss01", "ss02";
   }
 }
 

@@ -14,19 +14,18 @@ interface LiveTickerProps {
 }
 
 const platformColors: Record<string, string> = {
-  facebook: "hover:bg-[#1877F2]/20 hover:text-[#1877F2] border-[#1877F2]/30",
-  x: "hover:bg-white/10 hover:text-white border-white/20",
-  instagram:
-    "hover:bg-[#E4405F]/20 hover:text-[#E4405F] border-[#E4405F]/30",
-  tiktok: "hover:bg-white/10 hover:text-white border-white/20",
-  youtube: "hover:bg-[#FF0000]/20 hover:text-[#FF0000] border-[#FF0000]/30",
+  facebook: "hover:bg-[#1877F2]/10 hover:text-[#1877F2] border-stone hover:border-[#1877F2]/40",
+  x: "hover:bg-charcoal/5 hover:text-charcoal border-stone hover:border-charcoal/30",
+  instagram: "hover:bg-[#E4405F]/10 hover:text-[#E4405F] border-stone hover:border-[#E4405F]/40",
+  tiktok: "hover:bg-charcoal/5 hover:text-charcoal border-stone hover:border-charcoal/30",
+  youtube: "hover:bg-[#FF0000]/10 hover:text-[#FF0000] border-stone hover:border-[#FF0000]/40",
 };
 
 export default function LiveTicker({ feeds }: LiveTickerProps) {
   const liveCount = feeds.filter((f) => f.isLive).length;
 
   return (
-    <section id="live" className="border-t border-stone/30 bg-charcoal">
+    <section id="live" className="border-t border-stone bg-pearl-light">
       <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
         <div className="mb-14 sm:mb-20">
           <div className="mb-3 flex items-center gap-3">
@@ -34,17 +33,17 @@ export default function LiveTicker({ feeds }: LiveTickerProps) {
               Chapter 03
             </p>
             {liveCount > 0 && (
-              <span className="flex items-center gap-1.5 rounded-full border border-emerald/40 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-emerald">
+              <span className="flex items-center gap-1.5 rounded-full border border-emerald/30 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-emerald">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald" />
                 {liveCount} live{liveCount > 1 ? "s" : ""}
               </span>
             )}
           </div>
-          <h2 className="font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+          <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-charcoal sm:text-5xl lg:text-6xl">
             Live & Direct
           </h2>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-warm-muted sm:text-lg">
-            Follow the work as it happens. Interviews, events, town halls —
+            Follow the work as it happens. Interviews, events, town halls &mdash;
             streaming live across every platform.
           </p>
         </div>

@@ -23,21 +23,18 @@ export default function Hero({
   ctaHref,
 }: HeroProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.18]);
-  const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0.4]);
-  const textY = useTransform(scrollYProgress, [0, 0.5], [0, -40]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.6]);
-
+  const textY = useTransform(scrollYProgress, [0, 0.5], [0, -30]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.7]);
   const morphProgress = useTransform(scrollYProgress, [0, 0.3, 0.6], [0, 0.5, 1]);
-
   const showVideo = useTransform(scrollYProgress, [0.5, 0.7], [0, 1]);
 
   return (
@@ -60,11 +57,7 @@ export default function Hero({
         {images.length > 1 && (
           <motion.div
             className="absolute inset-0"
-            style={{
-              scale,
-              y,
-              opacity: morphProgress,
-            }}
+            style={{ scale, y, opacity: morphProgress }}
           >
             <img
               src={images[1]}
@@ -80,7 +73,6 @@ export default function Hero({
             style={{ opacity: showVideo }}
           >
             <video
-              ref={videoRef}
               src={video}
               muted
               loop
@@ -91,7 +83,7 @@ export default function Hero({
         )}
       </div>
 
-      <div className="scrim-dark pointer-events-none absolute inset-0 -z-10" />
+      <div className="scrim-hero pointer-events-none absolute inset-0 -z-10" />
 
       <motion.div
         className="relative z-10 flex w-full flex-col gap-6 p-6 pb-12 sm:p-12 lg:p-16"
@@ -102,7 +94,7 @@ export default function Hero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-2 font-display text-sm font-light uppercase tracking-[0.3em] text-gold sm:text-base"
+            className="mb-2 font-display text-sm font-light uppercase tracking-[0.3em] text-gold-dark sm:text-base"
           >
             {title}
           </motion.p>
@@ -111,7 +103,7 @@ export default function Hero({
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="font-display text-5xl leading-[0.95] tracking-tight text-warm-white sm:text-7xl md:text-8xl lg:text-9xl"
+            className="font-display text-5xl leading-[0.95] tracking-tight text-charcoal sm:text-7xl md:text-8xl lg:text-9xl"
           >
             {name}
           </motion.h1>
@@ -121,7 +113,7 @@ export default function Hero({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="max-w-lg text-base leading-relaxed text-warm-white/80 sm:text-lg md:text-xl"
+          className="max-w-lg text-base leading-relaxed text-warm-muted sm:text-lg md:text-xl"
         >
           {tagline}
         </motion.p>
@@ -134,7 +126,7 @@ export default function Hero({
         >
           <a
             href={ctaHref}
-            className="inline-flex h-13 min-h-[48px] items-center justify-center rounded-sm bg-gold px-8 text-center text-sm font-semibold uppercase tracking-widest text-night transition-all active:scale-[0.97] hover:bg-gold-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+            className="inline-flex h-13 min-h-[48px] items-center justify-center rounded-sm bg-gold px-8 text-center text-sm font-semibold uppercase tracking-widest text-white transition-all active:scale-[0.97] hover:bg-gold-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
           >
             {ctaLabel}
           </a>
@@ -150,7 +142,7 @@ export default function Hero({
           height="36"
           viewBox="0 0 24 36"
           fill="none"
-          className="text-warm-white/40"
+          className="text-warm-muted/50"
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
         >

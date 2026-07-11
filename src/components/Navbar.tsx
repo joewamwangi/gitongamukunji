@@ -24,14 +24,16 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-night/90 backdrop-blur-xl shadow-lg shadow-black/20"
+          ? "bg-white/90 backdrop-blur-xl shadow-sm shadow-black/5"
           : "bg-transparent"
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-10 lg:px-16">
         <a
           href="#"
-          className="font-display text-lg font-semibold tracking-wide text-warm-white"
+          className={`font-display text-lg font-semibold tracking-wide transition-colors ${
+            scrolled ? "text-charcoal" : "text-white"
+          }`}
         >
           <span className="text-gold">G.</span> Mukunji
         </a>
@@ -41,7 +43,11 @@ export default function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm font-medium uppercase tracking-widest text-warm-muted transition-colors hover:text-gold"
+                className={`text-sm font-medium uppercase tracking-widest transition-colors ${
+                  scrolled
+                    ? "text-warm-muted hover:text-gold-dark"
+                    : "text-white/70 hover:text-white"
+                }`}
               >
                 {link.label}
               </a>
@@ -56,15 +62,21 @@ export default function Navbar() {
         >
           <motion.span
             animate={open ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-            className="h-[2px] w-5 rounded-full bg-warm-white"
+            className={`h-[2px] w-5 rounded-full transition-colors ${
+              scrolled ? "bg-charcoal" : "bg-white"
+            }`}
           />
           <motion.span
             animate={open ? { opacity: 0 } : { opacity: 1 }}
-            className="h-[2px] w-5 rounded-full bg-warm-white"
+            className={`h-[2px] w-5 rounded-full transition-colors ${
+              scrolled ? "bg-charcoal" : "bg-white"
+            }`}
           />
           <motion.span
             animate={open ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-            className="h-[2px] w-5 rounded-full bg-warm-white"
+            className={`h-[2px] w-5 rounded-full transition-colors ${
+              scrolled ? "bg-charcoal" : "bg-white"
+            }`}
           />
         </button>
       </nav>
@@ -75,7 +87,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-night/97 backdrop-blur-2xl md:hidden"
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-white/98 backdrop-blur-2xl md:hidden"
           >
             {navLinks.map((link, i) => (
               <motion.a
@@ -85,7 +97,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * i }}
                 onClick={() => setOpen(false)}
-                className="font-display text-3xl tracking-wide text-warm-white transition-colors hover:text-gold"
+                className="font-display text-3xl tracking-wide text-charcoal transition-colors hover:text-gold-dark"
               >
                 {link.label}
               </motion.a>

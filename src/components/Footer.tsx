@@ -9,7 +9,7 @@ interface FooterProps {
   phone?: string;
 }
 
-function SocialIcon({ name, className }: { name: string; className?: string }) {
+function SocialIcon({ name }: { name: string }) {
   const s = "w-5 h-5";
   switch (name) {
     case "X":
@@ -31,18 +31,18 @@ function SocialIcon({ name, className }: { name: string; className?: string }) {
 
 export default function Footer({ socialLinks, email, phone }: FooterProps) {
   return (
-    <footer className="border-t border-stone/30 bg-night">
+    <footer className="border-t border-stone bg-pearl">
       <div className="mx-auto max-w-7xl px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
         <div className="flex flex-col gap-12 sm:flex-row sm:justify-between">
           <div className="max-w-xs">
-            <p className="font-display text-2xl tracking-tight text-warm-white">
+            <p className="font-display text-2xl tracking-tight text-charcoal">
               <span className="text-gold">G.</span> Mukunji
             </p>
             <p className="mt-2 text-sm text-warm-muted">
               MP, Manyatta Constituency
             </p>
             {email && (
-              <a href={`mailto:${email}`} className="mt-4 block text-sm text-warm-muted underline-offset-2 transition-colors hover:text-gold hover:underline">
+              <a href={`mailto:${email}`} className="mt-4 block text-sm text-warm-muted underline-offset-2 transition-colors hover:text-gold-dark hover:underline">
                 {email}
               </a>
             )}
@@ -62,7 +62,7 @@ export default function Footer({ socialLinks, email, phone }: FooterProps) {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-11 w-11 items-center justify-center rounded-sm border border-stone text-warm-muted transition-all hover:border-gold hover:text-gold"
+                  className="flex h-11 w-11 items-center justify-center rounded-sm border border-stone text-warm-muted transition-all hover:border-gold hover:text-gold-dark"
                   aria-label={link.label}
                 >
                   <SocialIcon name={link.label} />
@@ -72,7 +72,7 @@ export default function Footer({ socialLinks, email, phone }: FooterProps) {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-stone/30 pt-6 text-center text-xs text-warm-muted/50 sm:text-left">
+        <div className="mt-12 border-t border-stone pt-6 text-center text-xs text-warm-muted/60 sm:text-left">
           &copy; {new Date().getFullYear()} Gitonga Mukunji. All rights reserved.
         </div>
       </div>

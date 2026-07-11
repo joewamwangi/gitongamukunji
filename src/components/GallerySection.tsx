@@ -19,7 +19,7 @@ function PhotoCard({ photo }: { photo: GalleryPhoto }) {
 
   return (
     <div
-      className="group relative cursor-pointer overflow-hidden rounded-sm bg-stone"
+      className="group relative cursor-pointer overflow-hidden rounded-sm bg-white shadow-sm"
       onClick={() => setTapped((p) => !p)}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
@@ -38,16 +38,16 @@ function PhotoCard({ photo }: { photo: GalleryPhoto }) {
         className="w-full object-cover transition-all duration-700 group-hover:scale-105 group-focus-visible:scale-105"
       />
       <div
-        className={`pointer-events-none absolute inset-0 bg-gradient-to-t from-night/90 via-night/20 to-transparent p-5 flex flex-col justify-end transition-opacity duration-300 ${
+        className={`pointer-events-none absolute inset-0 scrim-gallery p-5 flex flex-col justify-end transition-opacity duration-300 ${
           tapped
             ? "opacity-100"
             : "opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100"
         }`}
       >
-        <p className="text-sm font-medium leading-snug text-warm-white">
+        <p className="text-sm font-medium leading-snug text-white">
           {photo.caption}
         </p>
-        <p className="mt-1 text-xs text-warm-muted">
+        <p className="mt-1 text-xs text-white/70">
           {photo.location} &middot; {photo.date}
         </p>
       </div>
@@ -57,17 +57,17 @@ function PhotoCard({ photo }: { photo: GalleryPhoto }) {
 
 export default function GallerySection({ photos }: GallerySectionProps) {
   return (
-    <section id="ground" className="border-t border-stone/30 bg-night">
+    <section id="ground" className="border-t border-stone bg-pearl">
       <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
         <div className="mb-14 sm:mb-20">
           <p className="mb-3 font-display text-xs font-light uppercase tracking-[0.25em] text-gold">
             Chapter 02
           </p>
-          <h2 className="font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+          <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-charcoal sm:text-5xl lg:text-6xl">
             On the Ground
           </h2>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-warm-muted sm:text-lg">
-            Real moments from across Manyatta. No staging, no filters — just the
+            Real moments from across Manyatta. No staging, no filters &mdash; just the
             work and the people it serves.
           </p>
         </div>

@@ -37,7 +37,7 @@ export default function RootLayout({
       lang="en"
       className={`${fraunces.variable} ${inter.variable} scroll-smooth`}
     >
-      <body className="min-h-dvh flex flex-col bg-night text-warm-white font-body antialiased selection:bg-gold/30 selection:text-warm-white">
+      <body className="min-h-dvh flex flex-col bg-pearl text-charcoal font-body antialiased">
         {children}
       </body>
     </html>

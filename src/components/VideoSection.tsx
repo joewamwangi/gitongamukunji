@@ -65,7 +65,7 @@ function VideoCard({ video, index }: { video: VideoItem; index: number }) {
         isReversed ? "lg:flex-row-reverse" : ""
       }`}
     >
-      <div className="relative aspect-[9/16] w-full max-w-sm shrink-0 overflow-hidden rounded-sm bg-stone shadow-2xl sm:mx-auto lg:mx-0">
+      <div className="relative aspect-[9/16] w-full max-w-sm shrink-0 overflow-hidden rounded-sm bg-white shadow-lg sm:mx-auto lg:mx-0">
         <video
           ref={videoRef}
           src={video.src}
@@ -79,7 +79,7 @@ function VideoCard({ video, index }: { video: VideoItem; index: number }) {
         <div className="absolute bottom-3 left-3 flex items-center gap-2">
           <button
             onClick={toggleMute}
-            className="flex h-9 w-9 items-center justify-center rounded-sm bg-night/60 text-warm-white backdrop-blur-sm transition-colors hover:bg-night/80"
+            className="flex h-9 w-9 items-center justify-center rounded-sm bg-white/80 text-charcoal backdrop-blur-sm transition-colors hover:bg-white"
             aria-label={muted ? "Unmute" : "Mute"}
           >
             {muted ? (
@@ -96,7 +96,7 @@ function VideoCard({ video, index }: { video: VideoItem; index: number }) {
             )}
           </button>
           {playing && (
-            <span className="rounded-sm bg-gold/90 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-night">
+            <span className="rounded-sm bg-gold/90 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-white">
               Playing
             </span>
           )}
@@ -104,10 +104,10 @@ function VideoCard({ video, index }: { video: VideoItem; index: number }) {
       </div>
 
       <div className={`flex-1 ${isReversed ? "lg:text-right" : ""}`}>
-        <p className="mb-2 text-xs uppercase tracking-[0.2em] text-gold">
+        <p className="mb-2 text-xs uppercase tracking-[0.2em] text-gold-dark">
           {video.date && `${video.date} — `}Unscripted
         </p>
-        <h3 className="font-display text-2xl leading-tight sm:text-3xl">
+        <h3 className="font-display text-2xl leading-tight text-charcoal sm:text-3xl">
           {video.title}
         </h3>
         <p className="mt-4 max-w-md text-base leading-relaxed text-warm-muted">
@@ -127,17 +127,17 @@ export default function VideoSection({ videos }: VideoSectionProps) {
   if (!videos.length) return null;
 
   return (
-    <section className="border-t border-stone/30 bg-night">
+    <section className="border-t border-stone bg-pearl">
       <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
         <div className="mb-14 sm:mb-20">
           <p className="mb-3 font-display text-xs font-light uppercase tracking-[0.25em] text-gold">
             Chapter 04
           </p>
-          <h2 className="font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+          <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-charcoal sm:text-5xl lg:text-6xl">
             Unscripted
           </h2>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-warm-muted sm:text-lg">
-            Real conversations, raw moments. No scripts, no spin — just the
+            Real conversations, raw moments. No scripts, no spin &mdash; just the
             work and the people behind it.
           </p>
         </div>
