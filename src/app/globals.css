@@ -4,17 +4,16 @@
   --font-display: var(--font-playfair), serif;
   --font-body: var(--font-inter), sans-serif;
 
-  --color-royal: #0C0A0F;
-  --color-royal-light: #151319;
-  --color-royal-surface: #1C1920;
-  --color-royal-border: #2A2730;
+  --color-pearl: #F8F7F4;
+  --color-pearl-light: #FCFBFA;
   --color-white: #FFFFFF;
-  --color-cream: #F0EBE3;
-  --color-muted: #8C8780;
+  --color-charcoal: #1A1815;
+  --color-stone: #E4E1DC;
+  --color-stone-light: #F0EEE9;
+  --color-muted: #6B6560;
   --color-gold: #C9A84C;
   --color-gold-light: #DFC06A;
   --color-gold-dark: #A88A30;
-  --color-crimson: #7A1A2E;
 }
 
 html {
@@ -22,51 +21,48 @@ html {
 }
 
 body {
-  background-color: var(--color-royal);
-  color: var(--color-cream);
+  background-color: var(--color-pearl);
+  color: var(--color-charcoal);
   font-family: var(--font-body), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background: rgba(201, 168, 76, 0.3);
-  color: var(--color-cream);
+  background: rgba(201, 168, 76, 0.25);
+  color: var(--color-charcoal);
 }
 
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-royal);
+  background: var(--color-pearl);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-royal-border);
+  background: var(--color-stone);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-gold-dark);
+  background: var(--color-gold);
 }
 
 @layer utilities {
-  .scrim-royal {
+  .scrim-gold {
     background: linear-gradient(
       to bottom,
-      rgba(12, 10, 15, 0) 0%,
-      rgba(12, 10, 15, 0.1) 35%,
-      rgba(12, 10, 15, 0.65) 65%,
-      rgba(12, 10, 15, 0.92) 100%
+      rgba(248, 247, 244, 0) 0%,
+      rgba(248, 247, 244, 0.1) 35%,
+      rgba(248, 247, 244, 0.65) 65%,
+      rgba(248, 247, 244, 0.92) 100%
     );
   }
   .scrim-gallery {
     background: linear-gradient(
       to top,
-      rgba(12, 10, 15, 0.88) 0%,
+      rgba(26, 24, 21, 0.85) 0%,
       transparent 100%
     );
-  }
-  .text-balance {
-    text-wrap: balance;
   }
 }
 

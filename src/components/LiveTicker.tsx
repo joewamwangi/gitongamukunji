@@ -13,19 +13,11 @@ interface LiveTickerProps {
   feeds: LiveFeed[];
 }
 
-const platformColors: Record<string, string> = {
-  facebook: "hover:bg-[#1877F2]/10 hover:text-[#1877F2] border-royal-border hover:border-[#1877F2]/40",
-  x: "hover:bg-cream/10 hover:text-cream border-royal-border hover:border-cream/30",
-  instagram: "hover:bg-[#E4405F]/10 hover:text-[#E4405F] border-royal-border hover:border-[#E4405F]/40",
-  tiktok: "hover:bg-cream/10 hover:text-cream border-royal-border hover:border-cream/30",
-  youtube: "hover:bg-[#FF0000]/10 hover:text-[#FF0000] border-royal-border hover:border-[#FF0000]/40",
-};
-
 export default function LiveTicker({ feeds }: LiveTickerProps) {
   const liveCount = feeds.filter((f) => f.isLive).length;
 
   return (
-    <section id="live" className="border-t border-royal-border bg-royal-light">
+    <section id="live" className="border-t border-stone bg-white">
       <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
         <div className="mb-14 sm:mb-20">
           <div className="mb-3 flex items-center gap-3">
@@ -33,13 +25,13 @@ export default function LiveTicker({ feeds }: LiveTickerProps) {
               Chapter 03
             </p>
             {liveCount > 0 && (
-              <span className="flex items-center gap-1.5 rounded-full border border-emerald/30 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-emerald">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald" />
+              <span className="flex items-center gap-1.5 rounded-full border border-gold/30 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gold-dark">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-gold" />
                 {liveCount} live{liveCount > 1 ? "s" : ""}
               </span>
             )}
           </div>
-          <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-cream sm:text-5xl lg:text-6xl">
+          <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-charcoal sm:text-5xl lg:text-6xl">
             Live & Direct
           </h2>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
@@ -58,7 +50,7 @@ export default function LiveTicker({ feeds }: LiveTickerProps) {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className={`group inline-flex items-center gap-3 rounded-sm border px-5 py-3 text-sm font-medium uppercase tracking-widest text-muted transition-all ${platformColors[feed.platform]}`}
+              className="group inline-flex items-center gap-3 rounded-sm border border-stone px-5 py-3 text-sm font-medium uppercase tracking-widest text-muted transition-all hover:border-gold hover:text-gold-dark"
             >
               {feed.isLive && (
                 <span className="relative flex h-2 w-2">
