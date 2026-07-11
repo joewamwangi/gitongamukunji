@@ -165,7 +165,7 @@ export default function Home() {
         name="Gitonga Mukunji"
         title="MP, Manyatta Constituency"
         tagline="Track every promise. Every project. Every voice."
-        ctaLabel="View the scorecard"
+        ctaLabel="#Form_Ni_Kujituma"
         ctaHref="#record"
       />
 
