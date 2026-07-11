@@ -162,40 +162,56 @@ const footerLinks = [
 
 export default function Home() {
   return (
-    <>
+    <div className="snap-container">
       <Navbar />
-      <Hero
-        mobileImages={heroMobileImages}
-        desktopImages={heroDesktopImages}
-        video={heroVideo || undefined}
-        name="Gitonga Mukunji"
-        title="MP, Manyatta Constituency"
-        tagline="Track every promise. Every project. Every voice."
-        ctaLabel="#Form_Ni_Kujituma"
-        ctaHref="#record"
-      />
+      <div className="snap-section">
+        <Hero
+          mobileImages={heroMobileImages}
+          desktopImages={heroDesktopImages}
+          video={heroVideo || undefined}
+          name="Gitonga Mukunji"
+          title="MP, Manyatta Constituency"
+          tagline="Track every promise. Every project. Every voice."
+          ctaLabel="#Form_Ni_Kujituma"
+          ctaHref="#record"
+        />
+      </div>
 
-      <RecordSection stats={stats} />
+      <div className="snap-section">
+        <RecordSection stats={stats} />
+      </div>
 
-      <HighlightSection
-        image={highlightImage}
-        quote="This constituency belongs to the people. My job is to serve, to deliver, and to never forget where I come from."
-        attribution="Gitonga Mukunji"
-      />
+      <div className="snap-section">
+        <HighlightSection
+          image={highlightImage}
+          quote="This constituency belongs to the people. My job is to serve, to deliver, and to never forget where I come from."
+          attribution="Gitonga Mukunji"
+        />
+      </div>
 
-      <GallerySection photos={galleryPhotos} />
+      <div className="snap-section">
+        <GallerySection photos={galleryPhotos} />
+      </div>
 
-      <VideoSection videos={videos} />
+      <div className="snap-section">
+        <VideoSection videos={videos} />
+      </div>
 
-      <LiveTicker feeds={socialFeeds} />
+      <div className="snap-section">
+        <LiveTicker feeds={socialFeeds} />
+      </div>
 
-      <WhistleblowerSection />
+      <div className="snap-section">
+        <WhistleblowerSection />
+      </div>
 
-      <Footer
-        socialLinks={footerLinks}
-        email="placeholder@gitongamukunji.com"
-        phone="+254 7XX XXX XXX"
-      />
-    </>
+      <div className="snap-section">
+        <Footer
+          socialLinks={footerLinks}
+          email="placeholder@gitongamukunji.com"
+          phone="+254 7XX XXX XXX"
+        />
+      </div>
+    </div>
   );
 }

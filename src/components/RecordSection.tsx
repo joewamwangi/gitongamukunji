@@ -55,25 +55,28 @@ function StatCard({ stat, index }: { stat: StatItem; index: number }) {
 export default function RecordSection({ stats }: RecordSectionProps) {
   return (
     <section id="record" className="border-t border-stone bg-white">
-      <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
-        <div className="mb-14 sm:mb-20">
-          <p className="mb-3 font-display text-xs font-light uppercase tracking-[0.25em] text-gold">
-            Chapter 01
-          </p>
-          <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-charcoal sm:text-5xl lg:text-6xl">
-            The Record
-          </h2>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            Promises made. Promises kept. Here&apos;s where things stand &mdash; tracked
-            openly, no spin.
-          </p>
-        </div>
+      <div className="mx-auto max-w-7xl px-6 py-16 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
+        {/* MOBILE: vertical center layout */}
+        <div className="flex min-h-[80dvh] flex-col justify-center sm:block">
+          <div className="mb-10 sm:mb-20">
+            <p className="mb-3 font-display text-xs font-light uppercase tracking-[0.25em] text-gold">
+              Chapter 01
+            </p>
+            <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-charcoal sm:text-5xl lg:text-6xl">
+              The Record
+            </h2>
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+              Promises made. Promises kept. Here&apos;s where things stand &mdash; tracked
+              openly, no spin.
+            </p>
+          </div>
 
-        {/* MOBILE: single column */}
-        <div className="flex flex-col gap-8 sm:hidden">
-          {stats.map((stat, i) => (
-            <StatCard key={i} stat={stat} index={i} />
-          ))}
+          {/* MOBILE: single column */}
+          <div className="flex flex-col gap-8 sm:hidden">
+            {stats.map((stat, i) => (
+              <StatCard key={i} stat={stat} index={i} />
+            ))}
+          </div>
         </div>
 
         {/* DESKTOP: 2-column grid */}

@@ -72,10 +72,15 @@ export default function GallerySection({ photos }: GallerySectionProps) {
           </p>
         </div>
 
-        {/* MOBILE: single column */}
-        <div className="flex flex-col gap-4 sm:hidden">
+        {/* MOBILE: horizontal swipe carousel */}
+        <p className="mb-3 text-right text-[10px] uppercase tracking-widest text-muted/50 sm:hidden">
+          Swipe &rarr;
+        </p>
+        <div className="flex gap-4 overflow-x-auto pb-4 sm:hidden [-webkit-overflow-scrolling:touch] snap-x snap-mandatory">
           {photos.map((photo) => (
-            <PhotoCard key={photo.id} photo={photo} />
+            <div key={photo.id} className="w-[80vw] shrink-0 snap-start">
+              <PhotoCard photo={photo} />
+            </div>
           ))}
         </div>
 

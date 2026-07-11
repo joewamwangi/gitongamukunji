@@ -30,6 +30,17 @@ body {
   width: 100%;
 }
 
+/* Mobile snap scroll between sections */
+@media (max-width: 767px) {
+  .snap-container {
+    scroll-snap-type: y proximity;
+  }
+  .snap-section {
+    scroll-snap-align: start;
+    min-height: 100dvh;
+  }
+}
+
 ::selection {
   background: rgba(212, 175, 55, 0.25);
   color: var(--color-charcoal);
