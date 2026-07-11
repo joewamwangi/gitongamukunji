@@ -182,11 +182,12 @@ export default function Home() {
       </div>
 
       <div className="snap-section">
-        <HighlightSection
-          image={highlightImage}
-          quote="This constituency belongs to the people. My job is to serve, to deliver, and to never forget where I come from."
-          attribution="Gitonga Mukunji"
-        />
+      <HighlightSection
+        image={highlightImage}
+        mobileImage="/images/highlight-mobile.jpg"
+        quote="This constituency belongs to the people. My job is to serve, to deliver, and to never forget where I come from."
+        attribution="Gitonga Mukunji"
+      />
       </div>
 
       <div className="snap-section">
