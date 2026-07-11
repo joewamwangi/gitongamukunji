@@ -185,7 +185,7 @@ export default function Home() {
       <HighlightSection
         image={highlightImage}
         mobileImage="/images/highlight-mobile.jpg"
-        quote="This constituency belongs to the people. My job is to serve, to deliver, and to never forget where I come from."
+        quote="Today's generation holds leaders accountable like never before. Anyone who believes that being elected makes them unreachable or aloof is out of touch."
         attribution="Gitonga Mukunji"
       />
       </div>
