@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -8,11 +8,7 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
+
 
 export const metadata: Metadata = {
   title: "Gitonga Mukunji — Manyatta Constituency",
@@ -35,9 +31,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${inter.variable} scroll-smooth`}
+      className={`${playfair.variable} scroll-smooth`}
     >
-      <body className="min-h-dvh flex flex-col bg-pearl text-charcoal font-body antialiased">
+      <body className="min-h-dvh flex flex-col bg-pearl text-charcoal font-serif antialiased">
         {children}
       </body>
     </html>

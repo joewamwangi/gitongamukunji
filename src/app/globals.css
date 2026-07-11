@@ -2,7 +2,7 @@
 
 @theme inline {
   --font-display: var(--font-playfair), serif;
-  --font-body: var(--font-inter), sans-serif;
+  --font-serif: var(--font-playfair), serif;
 
   --color-pearl: #F8F7F4;
   --color-pearl-light: #FCFBFA;
@@ -23,7 +23,7 @@ html {
 body {
   background-color: var(--color-pearl);
   color: var(--color-charcoal);
-  font-family: var(--font-body), sans-serif;
+  font-family: var(--font-serif), serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
