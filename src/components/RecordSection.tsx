@@ -73,15 +73,11 @@ export default function RecordSection({ stats, mobileBgImage }: RecordSectionPro
         <div className="relative z-10 px-6 py-16">
           <div className="flex min-h-[80dvh] flex-col justify-center">
             <div className="mb-10">
-              <p className="mb-3 font-display text-xs font-light uppercase tracking-[0.25em] text-gold">
-                Chapter 01
-              </p>
               <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-white">
-                The Record
+                The Leader
               </h2>
               <p className="mt-4 max-w-xl text-base leading-relaxed text-white/70">
-                Promises made. Promises kept. Here&apos;s where things stand &mdash; tracked
-                openly, no spin.
+                Uncompromised Representative. Principles Over Party. Sober Constitutionalist
               </p>
             </div>
 
@@ -97,15 +93,11 @@ export default function RecordSection({ stats, mobileBgImage }: RecordSectionPro
       {/* DESKTOP */}
       <div className="hidden mx-auto max-w-7xl px-6 py-16 sm:px-10 sm:py-28 lg:px-16 lg:py-36 sm:block">
         <div className="mb-14 sm:mb-20">
-          <p className="mb-3 font-display text-xs font-light uppercase tracking-[0.25em] text-gold">
-            Chapter 01
-          </p>
           <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-charcoal sm:text-5xl lg:text-6xl">
-            The Record
+            The Leader
           </h2>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            Promises made. Promises kept. Here&apos;s where things stand &mdash; tracked
-            openly, no spin.
+            Uncompromised Representative. Principles Over Party. Sober Constitutionalist
           </p>
         </div>
 

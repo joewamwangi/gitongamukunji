@@ -36,27 +36,27 @@ const highlightImage = "/images/placeholder-gallery-1.jpg";
 
 const stats = [
   {
-    label: "Projects Delivered",
+    label: "Education & Social Equity, Infrastructure",
     value: "—",
-    description: "Infrastructure, water, education & health projects completed since 2022",
+    description: "Direct involvement in local affairs; #MasomoBilaStress Ed. initiative, Learning Institutions Facelifts, Aggressive Roads Oversight",
     progress: 0,
   },
   {
-    label: "Manifesto Progress",
+    label: "Youth Empowerment",
     value: "—",
-    description: "Of 2022 campaign pledges tracked and verified",
+    description: "Digital Hubs roll outs, Advocacy for Youth-Led NYC, \"Spanner Boy\" Philosophy",
     progress: 0,
   },
   {
-    label: "Youth Supported",
+    label: "Agricultural & Economic Defense",
     value: "—",
-    description: "Bursaries, skills training & empowerment programs",
+    description: "Agricultural industry protection, Local Markets Uplifts",
     progress: 0,
   },
   {
-    label: "Town Halls Held",
+    label: "Legislative Integrity",
     value: "—",
-    description: "Public barazas, constituency forums & feedback sessions",
+    description: "Consequential tax legislations oversight, Two-Thirds Quorum Guardrail for Finance Bills",
     progress: 0,
   },
 ];
