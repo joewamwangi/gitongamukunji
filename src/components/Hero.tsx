@@ -4,7 +4,8 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 interface HeroProps {
-  images: string[];
+  mobileImages: string[];
+  desktopImages: string[];
   video?: string;
   name: string;
   title: string;
@@ -14,7 +15,8 @@ interface HeroProps {
 }
 
 export default function Hero({
-  images,
+  mobileImages,
+  desktopImages,
   video,
   name,
   title,
@@ -43,7 +45,7 @@ export default function Hero({
       <section className="relative flex h-dvh min-h-[600px] items-end overflow-hidden md:hidden">
         <div className="absolute inset-0 -z-10">
           <img
-            src={images[0]}
+            src={mobileImages[0]}
             alt=""
             className="h-full w-full object-cover"
           />
@@ -83,19 +85,19 @@ export default function Hero({
             style={{ scale, y, opacity }}
           >
             <img
-              src={images[0]}
+              src={desktopImages[0]}
               alt=""
               className="h-full w-full object-cover"
             />
           </motion.div>
 
-          {images.length > 1 && (
+          {desktopImages.length > 1 && (
             <motion.div
               className="absolute inset-0"
               style={{ scale, y, opacity: morphProgress }}
             >
               <img
-                src={images[1]}
+                src={desktopImages[1]}
                 alt=""
                 className="h-full w-full object-cover"
               />

@@ -20,9 +20,14 @@ import Footer from "@/components/Footer";
   - socialFeeds: direct links to social platforms
 */
 
-const heroImages = [
-  "/images/placeholder-hero-1.jpg",
-  "/images/placeholder-hero-2.jpg",
+const heroMobileImages = [
+  "/images/hero-mobile-1.jpg",
+  "/images/hero-mobile-2.jpg",
+];
+
+const heroDesktopImages = [
+  "/images/hero-desktop-1.jpg",
+  "/images/hero-desktop-2.png",
 ];
 
 const heroVideo = "";
@@ -160,7 +165,8 @@ export default function Home() {
     <>
       <Navbar />
       <Hero
-        images={heroImages}
+        mobileImages={heroMobileImages}
+        desktopImages={heroDesktopImages}
         video={heroVideo || undefined}
         name="Gitonga Mukunji"
         title="MP, Manyatta Constituency"
