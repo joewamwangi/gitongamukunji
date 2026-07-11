@@ -171,7 +171,7 @@ export default function Home() {
           video={heroVideo || undefined}
           name="Gitonga Mukunji"
           title="MP, Manyatta Constituency"
-          tagline="Track every promise. Every project. Every voice."
+          tagline="I will not be intimidated because I will continue defending my people!"
           ctaLabel="#Form_Ni_Kujituma"
           ctaHref="#record"
         />
