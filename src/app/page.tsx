@@ -6,6 +6,7 @@ import GallerySection from "@/components/GallerySection";
 import VideoSection from "@/components/VideoSection";
 import LiveTicker from "@/components/LiveTicker";
 import WhistleblowerSection from "@/components/WhistleblowerSection";
+import SectionDivider from "@/components/SectionDivider";
 import Footer from "@/components/Footer";
 
 /*
@@ -180,6 +181,8 @@ export default function Home() {
       <div className="snap-section">
         <RecordSection stats={stats} mobileBgImage={heroMobileImages[1]} />
       </div>
+
+      <SectionDivider />
 
       <div className="snap-section">
       <HighlightSection
