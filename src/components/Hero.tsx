@@ -42,7 +42,7 @@ export default function Hero({
   return (
     <>
       {/* MOBILE HERO */}
-      <section className="relative flex h-dvh min-h-[600px] items-end overflow-hidden md:hidden">
+      <section className="relative flex h-svh min-h-[100svh] items-end overflow-hidden md:hidden">
         <div className="absolute inset-0 -z-10">
           <img
             src={mobileImages[0]}
@@ -52,22 +52,22 @@ export default function Hero({
         </div>
         <div className="scrim-gold pointer-events-none absolute inset-0 -z-10" />
 
-        <div className="relative z-10 flex w-full flex-col gap-5 p-6 pb-14">
-          <p className="font-display text-xs font-light uppercase tracking-[0.3em] text-gold">
+        <div className="relative z-10 flex w-full flex-col gap-4 p-5 pb-10">
+          <p className="font-display text-[10px] font-light uppercase tracking-[0.3em] text-gold">
             {title}
           </p>
 
-          <h1 className="font-display text-6xl leading-[0.9] tracking-tight text-charcoal">
+          <h1 className="font-display text-5xl leading-[0.9] tracking-tight text-charcoal max-w-[85vw]">
             {name}
           </h1>
 
-          <p className="max-w-xs text-sm leading-relaxed text-muted">
+          <p className="max-w-[80vw] text-xs leading-relaxed text-muted">
             {tagline}
           </p>
 
           <a
             href={ctaHref}
-            className="inline-flex h-14 w-full items-center justify-center rounded-sm bg-charcoal px-8 text-center font-display text-lg font-bold tracking-wide text-white shadow-lg active:scale-[0.97]"
+            className="inline-flex h-12 w-full items-center justify-center rounded-sm bg-charcoal px-6 text-center font-display text-base font-bold tracking-wide text-white shadow-lg active:scale-[0.97]"
           >
             {ctaLabel}
           </a>
