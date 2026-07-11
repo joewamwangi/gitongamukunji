@@ -31,28 +31,24 @@ function SocialIcon({ name }: { name: string }) {
 
 export default function Footer({ socialLinks, email, phone }: FooterProps) {
   return (
-    <footer className="border-t border-stone bg-pearl">
+    <footer className="border-t border-royal-border bg-royal">
       <div className="mx-auto max-w-7xl px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
         <div className="flex flex-col gap-12 sm:flex-row sm:justify-between">
           <div className="max-w-xs">
-            <p className="font-display text-2xl tracking-tight text-charcoal">
+            <p className="font-display text-2xl tracking-tight text-cream">
               <span className="text-gold">G.</span> Mukunji
             </p>
-            <p className="mt-2 text-sm text-warm-muted">
-              MP, Manyatta Constituency
-            </p>
+            <p className="mt-2 text-sm text-muted">MP, Manyatta Constituency</p>
             {email && (
-              <a href={`mailto:${email}`} className="mt-4 block text-sm text-warm-muted underline-offset-2 transition-colors hover:text-gold-dark hover:underline">
+              <a href={`mailto:${email}`} className="mt-4 block text-sm text-muted underline-offset-2 transition-colors hover:text-gold hover:underline">
                 {email}
               </a>
             )}
-            {phone && (
-              <p className="mt-1 text-sm text-warm-muted">{phone}</p>
-            )}
+            {phone && <p className="mt-1 text-sm text-muted">{phone}</p>}
           </div>
 
           <div>
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-warm-muted">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-muted">
               Follow
             </p>
             <div className="flex flex-wrap gap-3">
@@ -62,7 +58,7 @@ export default function Footer({ socialLinks, email, phone }: FooterProps) {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-11 w-11 items-center justify-center rounded-sm border border-stone text-warm-muted transition-all hover:border-gold hover:text-gold-dark"
+                  className="flex h-11 w-11 items-center justify-center rounded-sm border border-royal-border text-muted transition-all hover:border-gold hover:text-gold"
                   aria-label={link.label}
                 >
                   <SocialIcon name={link.label} />
@@ -72,7 +68,7 @@ export default function Footer({ socialLinks, email, phone }: FooterProps) {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-stone pt-6 text-center text-xs text-warm-muted/60 sm:text-left">
+        <div className="mt-12 border-t border-royal-border pt-6 text-center text-xs text-muted/60 sm:text-left">
           &copy; {new Date().getFullYear()} Gitonga Mukunji. All rights reserved.
         </div>
       </div>

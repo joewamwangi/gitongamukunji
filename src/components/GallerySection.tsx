@@ -19,7 +19,7 @@ function PhotoCard({ photo }: { photo: GalleryPhoto }) {
 
   return (
     <div
-      className="group relative cursor-pointer overflow-hidden rounded-sm bg-white shadow-sm"
+      className="group relative cursor-pointer overflow-hidden rounded-sm bg-royal-surface shadow-lg shadow-black/20"
       onClick={() => setTapped((p) => !p)}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
@@ -44,10 +44,10 @@ function PhotoCard({ photo }: { photo: GalleryPhoto }) {
             : "opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100"
         }`}
       >
-        <p className="text-sm font-medium leading-snug text-white">
+        <p className="text-sm font-medium leading-snug text-cream">
           {photo.caption}
         </p>
-        <p className="mt-1 text-xs text-white/70">
+        <p className="mt-1 text-xs text-cream/60">
           {photo.location} &middot; {photo.date}
         </p>
       </div>
@@ -57,16 +57,16 @@ function PhotoCard({ photo }: { photo: GalleryPhoto }) {
 
 export default function GallerySection({ photos }: GallerySectionProps) {
   return (
-    <section id="ground" className="border-t border-stone bg-pearl">
+    <section id="ground" className="border-t border-royal-border bg-royal">
       <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
         <div className="mb-14 sm:mb-20">
           <p className="mb-3 font-display text-xs font-light uppercase tracking-[0.25em] text-gold">
             Chapter 02
           </p>
-          <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-charcoal sm:text-5xl lg:text-6xl">
+          <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-cream sm:text-5xl lg:text-6xl">
             On the Ground
           </h2>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-warm-muted sm:text-lg">
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
             Real moments from across Manyatta. No staging, no filters &mdash; just the
             work and the people it serves.
           </p>

@@ -29,19 +29,19 @@ function StatCard({ stat, index }: { stat: StatItem; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.7, delay: index * 0.1 }}
-      className="group border-l border-stone pl-5 transition-colors hover:border-gold sm:pl-6"
+      className="group border-l border-royal-border pl-5 transition-colors hover:border-gold sm:pl-6"
     >
-      <p className="font-display text-4xl leading-none text-gold-dark sm:text-5xl lg:text-6xl">
+      <p className="font-display text-4xl leading-none text-gold sm:text-5xl lg:text-6xl">
         {stat.value}
       </p>
-      <p className="mt-2 text-sm font-semibold uppercase tracking-widest text-charcoal sm:text-base">
+      <p className="mt-2 text-sm font-semibold uppercase tracking-widest text-cream sm:text-base">
         {stat.label}
       </p>
-      <p className="mt-1 max-w-xs text-sm leading-relaxed text-warm-muted">
+      <p className="mt-1 max-w-xs text-sm leading-relaxed text-muted">
         {stat.description}
       </p>
       {stat.progress !== undefined && (
-        <div className="mt-3 h-[2px] w-full max-w-[200px] bg-stone">
+        <div className="mt-3 h-[2px] w-full max-w-[200px] bg-royal-border">
           <motion.div
             className="h-full bg-gold"
             style={{ scaleX: progress, transformOrigin: "left" }}
@@ -54,16 +54,16 @@ function StatCard({ stat, index }: { stat: StatItem; index: number }) {
 
 export default function RecordSection({ stats }: RecordSectionProps) {
   return (
-    <section id="record" className="border-t border-stone bg-pearl-light">
+    <section id="record" className="border-t border-royal-border bg-royal-light">
       <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
         <div className="mb-14 sm:mb-20">
           <p className="mb-3 font-display text-xs font-light uppercase tracking-[0.25em] text-gold">
             Chapter 01
           </p>
-          <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-charcoal sm:text-5xl lg:text-6xl">
+          <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-cream sm:text-5xl lg:text-6xl">
             The Record
           </h2>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-warm-muted sm:text-lg">
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
             Promises made. Promises kept. Here&apos;s where things stand &mdash; tracked
             openly, no spin.
           </p>
