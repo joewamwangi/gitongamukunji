@@ -12,7 +12,8 @@ interface StatItem {
 
 interface RecordSectionProps {
   stats: StatItem[];
-  mobileBgImage?: string;
+  mobileFromImage?: string;
+  mobileToImage?: string;
 }
 
 function StatCard({ stat, index, dark }: { stat: StatItem; index: number; dark?: boolean }) {
@@ -53,23 +54,44 @@ function StatCard({ stat, index, dark }: { stat: StatItem; index: number; dark?:
   );
 }
 
-export default function RecordSection({ stats, mobileBgImage }: RecordSectionProps) {
+export default function RecordSection({ stats, mobileFromImage, mobileToImage }: RecordSectionProps) {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const morph = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0.8, 1]);
+
   return (
-    <section id="record" className="border-t border-stone bg-white">
-      {/* MOBILE: full-bleed bg image */}
+    <section id="record" ref={sectionRef} className="border-t border-stone bg-white">
+      {/* MOBILE: smooth image morph */}
       <div className="relative sm:hidden">
-        {mobileBgImage && (
-          <>
-            <div className="absolute inset-0">
-              <img
-                src={mobileBgImage}
-                alt=""
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <div className="absolute inset-0 bg-charcoal/60" />
-          </>
+        {mobileFromImage && (
+          <div className="absolute inset-0">
+            <img
+              src={mobileFromImage}
+              alt=""
+              className="h-full w-full object-cover"
+            />
+          </div>
         )}
+        {mobileToImage && (
+          <motion.div
+            className="absolute inset-0"
+            style={{ opacity: morph }}
+          >
+            <img
+              src={mobileToImage}
+              alt=""
+              className="h-full w-full object-cover"
+            />
+          </motion.div>
+        )}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-b from-transparent via-charcoal/40 to-charcoal/80"
+          style={{ opacity: morph }}
+        />
+
         <div className="relative z-10 px-6 py-16">
           <div className="flex min-h-[80dvh] flex-col justify-center">
             <div className="mb-10">

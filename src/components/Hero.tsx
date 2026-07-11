@@ -53,7 +53,7 @@ export default function Hero({
       {/* MOBILE HERO */}
       <section
         ref={mobileRef}
-        className="relative flex h-[200svh] items-end overflow-hidden md:hidden"
+        className="relative flex h-svh min-h-[100svh] items-end overflow-hidden md:hidden"
       >
         <div className="absolute inset-0 -z-10">
           <img
@@ -63,24 +63,7 @@ export default function Hero({
           />
         </div>
 
-        {mobileImages.length > 1 && (
-          <motion.div
-            className="absolute inset-0 -z-10"
-            style={{ opacity: mobileMorph }}
-          >
-            <img
-              src={mobileImages[1]}
-              alt=""
-              className="h-full w-full object-cover"
-            />
-          </motion.div>
-        )}
-
         <div className="scrim-gold pointer-events-none absolute inset-0 -z-10" />
-        <motion.div
-          className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-charcoal/30 to-charcoal/80"
-          style={{ opacity: mobileMorph }}
-        />
 
         <div className="relative z-10 flex w-full flex-col gap-4 p-5 pb-10">
           <p className="font-display text-[10px] font-light uppercase tracking-[0.3em] text-gold">
