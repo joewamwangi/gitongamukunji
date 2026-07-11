@@ -126,7 +126,7 @@ export default function Hero({
         >
           <a
             href={ctaHref}
-            className="inline-flex h-13 min-h-[48px] items-center justify-center rounded-sm bg-gold px-8 text-center text-sm font-semibold uppercase tracking-widest text-white transition-all active:scale-[0.97] hover:bg-gold-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+            className="inline-flex h-13 min-h-[52px] items-center justify-center rounded-sm bg-charcoal px-10 text-center font-display text-base font-bold tracking-wide text-white shadow-lg transition-all active:scale-[0.97] hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-charcoal"
           >
             {ctaLabel}
           </a>
