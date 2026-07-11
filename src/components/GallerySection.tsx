@@ -38,7 +38,7 @@ function PhotoCard({ photo }: { photo: GalleryPhoto }) {
         className="w-full object-cover transition-all duration-700 group-hover:scale-105 group-focus-visible:scale-105"
       />
       <div
-        className={`pointer-events-none absolute inset-0 scrim-gallery p-5 flex flex-col justify-end transition-opacity duration-300 ${
+        className={`pointer-events-none absolute inset-0 scrim-gallery p-4 flex flex-col justify-end transition-opacity duration-300 ${
           tapped
             ? "opacity-100"
             : "opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100"
@@ -72,7 +72,15 @@ export default function GallerySection({ photos }: GallerySectionProps) {
           </p>
         </div>
 
-        <div className="columns-2 gap-4 sm:columns-3 lg:columns-4">
+        {/* MOBILE: single column */}
+        <div className="flex flex-col gap-4 sm:hidden">
+          {photos.map((photo) => (
+            <PhotoCard key={photo.id} photo={photo} />
+          ))}
+        </div>
+
+        {/* DESKTOP: masonry */}
+        <div className="hidden columns-2 gap-4 sm:columns-3 lg:columns-4 sm:block">
           {photos.map((photo) => (
             <div key={photo.id} className="mb-4 break-inside-avoid">
               <PhotoCard photo={photo} />

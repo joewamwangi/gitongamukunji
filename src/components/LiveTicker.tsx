@@ -40,7 +40,35 @@ export default function LiveTicker({ feeds }: LiveTickerProps) {
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-3">
+        {/* MOBILE: horizontal scroll */}
+        <div className="flex gap-3 overflow-x-auto pb-2 sm:hidden [-webkit-overflow-scrolling:touch] snap-x snap-mandatory">
+          {feeds.map((feed) => (
+            <motion.a
+              key={feed.platform}
+              href={feed.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="group inline-flex shrink-0 snap-start items-center gap-3 rounded-sm border border-stone px-5 py-3.5 text-sm font-medium uppercase tracking-widest text-muted transition-all hover:border-gold hover:text-gold-dark"
+            >
+              {feed.isLive && (
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-gold" />
+                </span>
+              )}
+              {feed.label}
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                <path d="M7 17L17 7M7 7h10v10" />
+              </svg>
+            </motion.a>
+          ))}
+        </div>
+
+        {/* DESKTOP: flex wrap */}
+        <div className="hidden flex-wrap gap-3 sm:flex">
           {feeds.map((feed) => (
             <motion.a
               key={feed.platform}
@@ -59,15 +87,7 @@ export default function LiveTicker({ feeds }: LiveTickerProps) {
                 </span>
               )}
               {feed.label}
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                 <path d="M7 17L17 7M7 7h10v10" />
               </svg>
             </motion.a>

@@ -61,11 +61,11 @@ function VideoCard({ video, index }: { video: VideoItem; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.7 }}
-      className={`flex flex-col gap-8 lg:flex-row lg:items-center ${
-        isReversed ? "lg:flex-row-reverse" : ""
+      className={`flex flex-col gap-8 md:flex-row md:items-center ${
+        isReversed ? "md:flex-row-reverse" : ""
       }`}
     >
-      <div className="relative aspect-[9/16] w-full max-w-sm shrink-0 overflow-hidden rounded-sm bg-white shadow-lg sm:mx-auto lg:mx-0">
+      <div className="relative aspect-[9/16] w-full max-w-sm shrink-0 overflow-hidden rounded-sm bg-white shadow-lg">
         <video
           ref={videoRef}
           src={video.src}
@@ -103,11 +103,11 @@ function VideoCard({ video, index }: { video: VideoItem; index: number }) {
         </div>
       </div>
 
-      <div className={`flex-1 ${isReversed ? "lg:text-right" : ""}`}>
+      <div className={`flex-1 ${isReversed ? "md:text-right" : ""}`}>
         <p className="mb-2 text-xs uppercase tracking-[0.2em] text-gold-dark">
           {video.date && `${video.date} — `}Unscripted
         </p>
-        <h3 className="font-display text-2xl leading-tight text-charcoal sm:text-3xl">
+        <h3 className="font-display text-2xl leading-tight text-charcoal">
           {video.title}
         </h3>
         <p className="mt-4 max-w-md text-base leading-relaxed text-muted">
@@ -140,7 +140,7 @@ export default function VideoSection({ videos }: VideoSectionProps) {
           </p>
         </div>
 
-        <div className="flex flex-col gap-16 sm:gap-24">
+        <div className="flex flex-col gap-16 md:gap-24">
           {videos.map((video, i) => (
             <VideoCard key={i} video={video} index={i} />
           ))}

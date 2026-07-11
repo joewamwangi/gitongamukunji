@@ -29,19 +29,19 @@ function StatCard({ stat, index }: { stat: StatItem; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.7, delay: index * 0.1 }}
-      className="group border-l-2 border-gold/30 pl-5 transition-colors hover:border-gold sm:pl-6"
+      className="group border-l-2 border-gold/30 pl-4 transition-colors hover:border-gold sm:pl-6"
     >
-      <p className="font-display text-4xl leading-none text-gold-dark sm:text-5xl lg:text-6xl">
+      <p className="font-display text-3xl leading-none text-gold-dark sm:text-5xl lg:text-6xl">
         {stat.value}
       </p>
-      <p className="mt-2 text-sm font-semibold uppercase tracking-widest text-charcoal sm:text-base">
+      <p className="mt-1.5 text-sm font-semibold uppercase tracking-widest text-charcoal sm:text-base">
         {stat.label}
       </p>
       <p className="mt-1 max-w-xs text-sm leading-relaxed text-muted">
         {stat.description}
       </p>
       {stat.progress !== undefined && (
-        <div className="mt-3 h-[2px] w-full max-w-[200px] bg-stone">
+        <div className="mt-2 h-[2px] w-full max-w-[200px] bg-stone">
           <motion.div
             className="h-full bg-gold"
             style={{ scaleX: progress, transformOrigin: "left" }}
@@ -69,7 +69,15 @@ export default function RecordSection({ stats }: RecordSectionProps) {
           </p>
         </div>
 
-        <div className="grid gap-10 sm:grid-cols-2 lg:gap-14">
+        {/* MOBILE: single column */}
+        <div className="flex flex-col gap-8 sm:hidden">
+          {stats.map((stat, i) => (
+            <StatCard key={i} stat={stat} index={i} />
+          ))}
+        </div>
+
+        {/* DESKTOP: 2-column grid */}
+        <div className="hidden gap-10 sm:grid sm:grid-cols-2 lg:gap-14">
           {stats.map((stat, i) => (
             <StatCard key={i} stat={stat} index={i} />
           ))}
