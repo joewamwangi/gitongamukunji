@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import RecordSection from "@/components/RecordSection";
+import HighlightSection from "@/components/HighlightSection";
 import GallerySection from "@/components/GallerySection";
 import VideoSection from "@/components/VideoSection";
 import LiveTicker from "@/components/LiveTicker";
@@ -12,6 +13,7 @@ import Footer from "@/components/Footer";
   - heroImages[0]: high-quality environmental portrait (campaign-era, well-lit, confident)
   - heroImages[1]: current in-office or constituency photo (crossfade target)
   - heroVideo: optional vertical clip for the scroll-reveal video layer
+  - highlightImage: dramatic full-bleed image for the quote section
   - stats: verified numbers from the office
   - galleryPhotos: real constituency photos with honest captions
   - videos: unscripted clips, 9:16 vertical preferred
@@ -24,6 +26,8 @@ const heroImages = [
 ];
 
 const heroVideo = "";
+
+const highlightImage = "/images/placeholder-gallery-1.jpg";
 
 const stats = [
   {
@@ -164,11 +168,23 @@ export default function Home() {
         ctaLabel="View the scorecard"
         ctaHref="#record"
       />
+
       <RecordSection stats={stats} />
+
+      <HighlightSection
+        image={highlightImage}
+        quote="This constituency belongs to the people. My job is to serve, to deliver, and to never forget where I come from."
+        attribution="Gitonga Mukunji"
+      />
+
       <GallerySection photos={galleryPhotos} />
+
       <VideoSection videos={videos} />
+
       <LiveTicker feeds={socialFeeds} />
+
       <WhistleblowerSection />
+
       <Footer
         socialLinks={footerLinks}
         email="placeholder@gitongamukunji.com"

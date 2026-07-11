@@ -83,7 +83,7 @@ export default function Hero({
         )}
       </div>
 
-      <div className="scrim-hero pointer-events-none absolute inset-0 -z-10" />
+      <div className="scrim-hero-light pointer-events-none absolute inset-0 -z-10" />
 
       <motion.div
         className="relative z-10 flex w-full flex-col gap-6 p-6 pb-12 sm:p-12 lg:p-16"
