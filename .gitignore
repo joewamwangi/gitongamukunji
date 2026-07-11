@@ -46,6 +46,9 @@ yarn-error.log*
 *.bat
 *.vbs
 
+# source photos (not for repo)
+/Photos/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

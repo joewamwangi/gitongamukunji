@@ -22,8 +22,14 @@ import Footer from "@/components/Footer";
 */
 
 const heroMobileImages = [
-  "/images/hero-mobile-1.jpg",
-  "/images/hero-mobile-2.jpg",
+  "/images/hero-mobile-slide-1.jpg",
+  "/images/hero-mobile-slide-2.jpg",
+  "/images/hero-mobile-slide-3.jpg",
+  "/images/hero-mobile-slide-4.jpg",
+  "/images/hero-mobile-slide-5.jpg",
+  "/images/hero-mobile-slide-6.jpg",
+  "/images/hero-mobile-slide-7.jpg",
+  "/images/hero-mobile-slide-8.jpg",
 ];
 
 const heroDesktopImages = [

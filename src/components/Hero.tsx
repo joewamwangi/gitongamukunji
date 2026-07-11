@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 interface HeroProps {
@@ -32,12 +32,6 @@ export default function Hero({
     offset: ["start start", "end start"],
   });
 
-  const mobileScroll = useScroll({
-    target: mobileRef,
-    offset: ["start start", "end start"],
-  });
-  const mobileProgress = mobileScroll.scrollYProgress;
-
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
   const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0.4]);
@@ -46,43 +40,51 @@ export default function Hero({
   const morphProgress = useTransform(scrollYProgress, [0, 0.3, 0.6], [0, 0.5, 1]);
   const showVideo = useTransform(scrollYProgress, [0.5, 0.7], [0, 1]);
 
-  const mobileMorph = useTransform(mobileProgress, [0, 1], [0, 1]);
+  const slides = mobileImages.slice(0, 6);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % slides.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
+  const goToSlide = useCallback(
+    (i: number) => setActiveIndex(i),
+    []
+  );
 
   return (
     <>
-      {/* MOBILE HERO */}
+      {/* MOBILE HERO — Auto-carusel */}
       <section
         ref={mobileRef}
-        className="relative flex h-[200svh] items-end overflow-hidden md:hidden"
+        className="relative flex h-dvh items-end overflow-hidden md:hidden"
       >
-        <div className="absolute inset-0 -z-10">
-          <img
-            src={mobileImages[0]}
-            alt=""
-            className="h-full w-full object-cover"
-          />
+        <div className="absolute inset-0 -z-10 bg-charcoal">
+          {slides.map((src, i) => (
+            <motion.img
+              key={i}
+              src={src}
+              alt=""
+              className="absolute inset-0 h-full w-full object-cover"
+              initial={false}
+              animate={{
+                opacity: i === activeIndex ? 1 : 0,
+                scale: i === activeIndex ? 1 : 1.06,
+              }}
+              transition={{
+                duration: 1.4,
+                ease: [0.25, 0.1, 0.25, 1],
+              }}
+            />
+          ))}
         </div>
 
-        {mobileImages.length > 1 && (
-          <motion.div
-            className="absolute inset-0 -z-10"
-            style={{ opacity: mobileMorph }}
-          >
-            <img
-              src={mobileImages[1]}
-              alt=""
-              className="h-full w-full object-cover"
-            />
-          </motion.div>
-        )}
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-t from-charcoal/80 via-charcoal/30 to-transparent" />
 
-        <div className="scrim-gold pointer-events-none absolute inset-0 -z-10" />
-        <motion.div
-          className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-charcoal/30 to-charcoal/80"
-          style={{ opacity: mobileMorph }}
-        />
-
-        <div className="relative z-10 flex w-full flex-col gap-4 p-5 pb-10">
+        <div className="relative z-10 flex w-full flex-col gap-4 p-5 pb-12">
           <p className="font-display text-[10px] font-light uppercase tracking-[0.3em] text-gold">
             {title}
           </p>
@@ -91,7 +93,7 @@ export default function Hero({
             {name}
           </h1>
 
-          <p className="max-w-[80vw] text-xs leading-relaxed text-white/80">
+          <p className="max-w-[75vw] text-[11px] leading-snug text-white/70">
             {tagline}
           </p>
 
@@ -101,6 +103,19 @@ export default function Hero({
           >
             {ctaLabel}
           </a>
+
+          <div className="flex items-center gap-1.5 pt-1">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => goToSlide(i)}
+                className={`h-0.5 rounded-full transition-all duration-500 ${
+                  i === activeIndex ? "w-6 bg-gold" : "w-1.5 bg-white/30"
+                }`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
