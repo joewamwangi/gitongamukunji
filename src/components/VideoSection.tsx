@@ -132,11 +132,10 @@ export default function VideoSection({ videos }: VideoSectionProps) {
             Chapter 04
           </p>
           <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-charcoal sm:text-5xl lg:text-6xl">
-            Unscripted
+            Press Releases, Blogs &amp; Posts
           </h2>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            Real conversations, raw moments. No scripts, no spin &mdash; just the
-            work and the people behind it.
+            Stay informed with the latest press releases, blog posts, and media updates from the office of Gitonga Mukunji.
           </p>
         </div>
 
