@@ -77,7 +77,7 @@ export default function GallerySection({ photos }: GallerySectionProps) {
         <p className="mb-3 text-right text-[10px] uppercase tracking-widest text-muted/50 sm:hidden">
           Swipe &rarr;
         </p>
-        <div className="flex gap-4 overflow-x-auto pb-4 sm:hidden [-webkit-overflow-scrolling:touch] snap-x snap-mandatory">
+        <div className="flex gap-4 overflow-x-auto pb-4 sm:hidden snap-x snap-proximity scroll-smooth" style={{ WebkitOverflowScrolling: "touch" }}>
           {photos.map((photo) => (
             <div key={photo.id} className="w-[80vw] shrink-0 snap-start">
               <PhotoCard photo={photo} />
