@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect, useCallback } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 
 interface HeroProps {
   mobileImages: string[];
@@ -63,23 +63,18 @@ export default function Hero({
         className="relative flex h-dvh items-end overflow-hidden md:hidden"
       >
         <div className="absolute inset-0 -z-10 bg-charcoal">
-          {slides.map((src, i) => (
+          <AnimatePresence mode="popLayout">
             <motion.img
-              key={i}
-              src={src}
+              key={activeIndex}
+              src={slides[activeIndex]}
               alt=""
               className="absolute inset-0 h-full w-full object-cover"
-              initial={false}
-              animate={{
-                opacity: i === activeIndex ? 1 : 0,
-                scale: i === activeIndex ? 1 : 1.04,
-              }}
-              transition={{
-                duration: 1.8,
-                ease: [0.45, 0, 0.55, 1],
-              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.6, ease: "linear" }}
             />
-          ))}
+          </AnimatePresence>
         </div>
 
         <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-t from-charcoal/80 via-charcoal/30 to-transparent" />
