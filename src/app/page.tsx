@@ -96,6 +96,33 @@ const galleryPhotos = [
   },
 ];
 
+const educationPhotos = [
+  {
+    id: "ndunda",
+    src: "/images/education-ndunda.jpg",
+    caption: "Ndunda Primary School",
+    location: "Ndunda",
+    date: "2026",
+    href: "https://formnikujituma.co.ke/ndunda-primary-school-transformation-takes-shape-as-construction-of-new-administration-block-begins/",
+  },
+  {
+    id: "tende",
+    src: "/images/education-tende.jpg",
+    caption: "Tende Primary School",
+    location: "Gaturi South",
+    date: "June 2026",
+    href: "https://formnikujituma.co.ke/tende-primary-school-undergoing-remarkable-transformation-in-gaturi-south-june-2026/",
+  },
+  {
+    id: "engagement",
+    src: "/images/education-engagement.jpg",
+    caption: "Engagement With Manyatta School Heads",
+    location: "Manyatta",
+    date: "2026",
+    href: "https://formnikujituma.co.ke/consultative-engagement-with-manyatta-secondary-school-principals/",
+  },
+];
+
 const videos = [
   {
     src: "/videos/placeholder-video-1.mp4",
@@ -186,7 +213,7 @@ export default function Home() {
       <SectionDivider />
 
       <div className="snap-section">
-        <GallerySectionCopy photos={galleryPhotos} />
+        <GallerySectionCopy photos={educationPhotos} />
       </div>
 
       <SectionDivider />
