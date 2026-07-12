@@ -113,8 +113,15 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-white px-6"
+              className="fixed inset-0 z-40 flex items-start justify-center pt-24 bg-black/20 backdrop-blur-sm"
             >
+              <motion.div
+                initial={{ opacity: 0, y: -12, scale: 0.97 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -12, scale: 0.97 }}
+                transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+                className="w-[90%] max-w-sm rounded-sm bg-white/85 backdrop-blur-xl px-6 py-5 shadow-xl shadow-black/10"
+              >
               <div className="flex w-full max-w-sm flex-col">
                 {navGroups.map((group, i) => (
                   <motion.div
@@ -212,6 +219,7 @@ export default function Navbar() {
                   </motion.div>
                 ))}
               </div>
+            </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
