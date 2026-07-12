@@ -46,7 +46,7 @@ export default function Hero({
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % slides.length);
-    }, 4500);
+    }, 5500);
     return () => clearInterval(timer);
   }, [slides.length]);
 
@@ -72,11 +72,11 @@ export default function Hero({
               initial={false}
               animate={{
                 opacity: i === activeIndex ? 1 : 0,
-                scale: i === activeIndex ? 1 : 1.06,
+                scale: i === activeIndex ? 1 : 1.04,
               }}
               transition={{
-                duration: 1.4,
-                ease: [0.25, 0.1, 0.25, 1],
+                duration: 1.8,
+                ease: [0.45, 0, 0.55, 1],
               }}
             />
           ))}
