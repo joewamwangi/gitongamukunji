@@ -4,6 +4,7 @@ import RecordSection from "@/components/RecordSection";
 import HighlightSection from "@/components/HighlightSection";
 import GallerySection from "@/components/GallerySection";
 import GallerySectionCopy from "@/components/GallerySectionCopy";
+import GallerySectionCopy2 from "@/components/GallerySectionCopy2";
 import VideoSection from "@/components/VideoSection";
 import LiveTicker from "@/components/LiveTicker";
 import WhistleblowerSection from "@/components/WhistleblowerSection";
@@ -214,6 +215,12 @@ export default function Home() {
 
       <div className="snap-section">
         <GallerySectionCopy photos={educationPhotos} />
+      </div>
+
+      <SectionDivider />
+
+      <div className="snap-section">
+        <GallerySectionCopy2 photos={educationPhotos} />
       </div>
 
       <SectionDivider />
