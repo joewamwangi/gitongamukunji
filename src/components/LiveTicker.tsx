@@ -55,14 +55,24 @@ function PlatformIcon({ platform, className }: { platform: LiveFeed["platform"];
 export default function LiveTicker({ feeds }: LiveTickerProps) {
   const liveCount = feeds.filter((f) => f.isLive).length;
 
+  const brandColors: Record<LiveFeed["platform"], { border: string; text: string; hoverBg: string }> = {
+    facebook: { border: "border-[#1877F2]", text: "text-[#1877F2]", hoverBg: "hover:bg-[#1877F2]" },
+    x: { border: "border-[#000000]", text: "text-[#000000]", hoverBg: "hover:bg-[#000000]" },
+    instagram: { border: "border-[#E4405F]", text: "text-[#E4405F]", hoverBg: "hover:bg-[#E4405F]" },
+    tiktok: { border: "border-[#000000]", text: "text-[#000000]", hoverBg: "hover:bg-[#000000]" },
+    youtube: { border: "border-[#FF0000]", text: "text-[#FF0000]", hoverBg: "hover:bg-[#FF0000]" },
+  };
+
+  const buttonClass = (platform: LiveFeed["platform"]) => {
+    const c = brandColors[platform];
+    return `group inline-flex items-center gap-3 rounded-sm border px-5 py-3.5 text-sm font-medium uppercase tracking-widest transition-all text-muted border-stone hover:text-white ${c.hoverBg} ${c.border} sm:py-3`;
+  };
+
   return (
     <section id="live" className="border-t border-stone bg-white">
       <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
         <div className="mb-14 sm:mb-20">
           <div className="mb-3 flex items-center gap-3">
-            <p className="font-display text-xs font-light uppercase tracking-[0.25em] text-gold">
-              Chapter 03
-            </p>
             {liveCount > 0 && (
               <span className="flex items-center gap-1.5 rounded-full border border-gold/30 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gold-dark">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-gold" />
@@ -90,7 +100,7 @@ export default function LiveTicker({ feeds }: LiveTickerProps) {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="group inline-flex shrink-0 snap-start items-center gap-3 rounded-sm border border-stone px-5 py-3.5 text-sm font-medium uppercase tracking-widest text-muted transition-all hover:border-gold hover:text-gold-dark"
+              className={buttonClass(feed.platform) + " shrink-0 snap-start"}
             >
               {feed.isLive && (
                 <span className="relative flex h-2 w-2">
@@ -118,7 +128,7 @@ export default function LiveTicker({ feeds }: LiveTickerProps) {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="group inline-flex items-center gap-3 rounded-sm border border-stone px-5 py-3 text-sm font-medium uppercase tracking-widest text-muted transition-all hover:border-gold hover:text-gold-dark"
+              className={buttonClass(feed.platform)}
             >
               {feed.isLive && (
                 <span className="relative flex h-2 w-2">
