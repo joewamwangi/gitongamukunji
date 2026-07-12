@@ -169,35 +169,10 @@ function YouTubeCard({ video, index }: { video: VideoItem; index: number }) {
 }
 
 function FacebookCard({ video, index }: { video: VideoItem; index: number }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const [inView, setInView] = useState(false);
-  const [userPlayed, setUserPlayed] = useState(false);
-
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
-      { rootMargin: "-80px 0px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!inView && userPlayed) {
-      setUserPlayed(false);
-    }
-  }, [inView, userPlayed]);
-
-  const embedSrc = `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(video.facebookUrl!)}&show_text=0&width=734`;
-
   const isReversed = index % 2 !== 0;
 
   return (
     <motion.div
-      ref={containerRef}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -206,32 +181,24 @@ function FacebookCard({ video, index }: { video: VideoItem; index: number }) {
         isReversed ? "md:flex-row-reverse" : ""
       }`}
     >
-      <div className="relative aspect-video w-full max-w-lg shrink-0 overflow-hidden rounded-sm bg-charcoal shadow-lg">
-        {userPlayed ? (
-          <iframe
-            ref={iframeRef}
-            src={embedSrc}
-            className="h-full w-full"
-            allow="autoplay; encrypted-media; picture-in-picture"
-            style={{ border: "none", overflow: "hidden" }}
-            scrolling="no"
-            allowFullScreen
-          />
-        ) : (
-          <button
-            onClick={() => setUserPlayed(true)}
-            className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-charcoal/60 transition-colors hover:bg-charcoal/40"
-            aria-label="Play video"
-          >
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gold shadow-lg transition-transform hover:scale-105">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="ml-0.5 text-charcoal">
-                <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" />
-              </svg>
-            </div>
-            <span className="text-xs uppercase tracking-[0.15em] text-white/80">Click to watch</span>
-          </button>
-        )}
-      </div>
+      <a
+        href={video.facebookUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative aspect-video w-full max-w-lg shrink-0 overflow-hidden rounded-sm bg-charcoal shadow-lg transition-transform hover:scale-[1.02]"
+      >
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-charcoal/70 transition-colors hover:bg-charcoal/50">
+          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gold shadow-lg">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="ml-0.5 text-charcoal">
+              <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" />
+            </svg>
+          </div>
+          <div className="text-center">
+            <p className="text-sm font-semibold text-white">Watch on Facebook</p>
+            <p className="mt-1 text-xs text-white/60">Opens in new tab</p>
+          </div>
+        </div>
+      </a>
 
       <div className={`flex-1 ${isReversed ? "md:text-right" : ""}`}>
         <p className="mb-2 inline-block rounded-sm bg-gold/10 px-2 py-0.5 text-xs uppercase tracking-[0.2em] text-gold-dark">
