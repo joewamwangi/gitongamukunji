@@ -341,15 +341,6 @@ export default function VideoSection({ videos }: VideoSectionProps) {
         <div className="flex flex-col">
           {videos.map((video, i) => (
             <div key={i}>
-              {i > 0 && (
-                <div className="flex items-center justify-center py-10">
-                  <div className="flex w-full max-w-[200px] items-center gap-3">
-                    <span className="h-px flex-1 bg-gold/40" />
-                    <span className="h-1.5 w-1.5 rotate-45 bg-gold shrink-0" />
-                    <span className="h-px flex-1 bg-gold/40" />
-                  </div>
-                </div>
-              )}
               {video.youtubeId ? (
                 <YouTubeCard video={video} index={i} />
               ) : video.facebookUrl ? (
@@ -357,6 +348,13 @@ export default function VideoSection({ videos }: VideoSectionProps) {
               ) : (
                 <VideoCard video={video} index={i} />
               )}
+              <div className="flex items-center justify-center py-10">
+                <div className="flex w-full max-w-[200px] items-center gap-3">
+                  <span className="h-px flex-1 bg-gold/40" />
+                  <span className="h-1.5 w-1.5 rotate-45 bg-gold shrink-0" />
+                  <span className="h-px flex-1 bg-gold/40" />
+                </div>
+              </div>
             </div>
           ))}
         </div>
