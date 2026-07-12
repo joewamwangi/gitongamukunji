@@ -35,6 +35,14 @@ function PhotoCard({ photo }: { photo: GalleryPhoto }) {
           {photo.location} &middot; {photo.date}
         </p>
       </div>
+      {photo.href && (
+        <div className="absolute right-3 top-3 flex items-center gap-1.5 rounded-sm bg-white/20 backdrop-blur-sm px-2 py-1 text-[9px] font-medium uppercase tracking-wider text-white/90">
+          Open
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+            <path d="M2 8l6-6M3 2h5v5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </div>
+      )}
     </div>
   );
 
