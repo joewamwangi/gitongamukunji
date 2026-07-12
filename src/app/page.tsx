@@ -147,15 +147,6 @@ const videos = [
     date: "Wednesday 8th July, 2026",
     source: "Documentary Premier",
   },
-  {
-    src: "/videos/placeholder-video-3.mp4",
-    poster: "/images/placeholder-video-poster-3.jpg",
-    title: "Roads or water? A constituent demands answers",
-    description:
-      "A resident holds the MP to account on delayed projects. This is what accountability looks like in real time.",
-    location: "Nguviu",
-    date: "Nov 2024",
-  },
 ];
 
 const socialFeeds = [
