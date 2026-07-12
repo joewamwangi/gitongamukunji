@@ -37,7 +37,7 @@ export default function Footer({ socialLinks, email, phone }: FooterProps) {
         <div className="flex flex-col gap-10 sm:hidden">
           <div>
             <p className="font-display text-xl tracking-tight text-charcoal">
-              <span className="text-gold">G.</span> Mukunji
+              <span className="text-gold">Gitonga</span> Mukunji
             </p>
             <p className="mt-1.5 text-sm text-muted">MP, Manyatta Constituency</p>
             {email && (
@@ -78,7 +78,7 @@ export default function Footer({ socialLinks, email, phone }: FooterProps) {
           <div className="flex flex-col gap-12 sm:flex-row sm:justify-between">
             <div className="max-w-xs">
               <p className="font-display text-2xl tracking-tight text-charcoal">
-                <span className="text-gold">G.</span> Mukunji
+                <span className="text-gold">Gitonga</span> Mukunji
               </p>
               <p className="mt-2 text-sm text-muted">MP, Manyatta Constituency</p>
               {email && (

@@ -235,8 +235,8 @@ export default function Home() {
       <div className="snap-section">
         <Footer
           socialLinks={footerLinks}
-          email="placeholder@gitongamukunji.com"
-          phone="+254 7XX XXX XXX"
+          email="jgmwah@gmail.com"
+          phone="+254 725 069 947"
         />
       </div>
     </div>

@@ -81,7 +81,7 @@ export default function Navbar() {
               scrolled ? "text-charcoal" : "text-white"
             }`}
           >
-            <span className="text-gold">G.</span> Mukunji
+            <span className="text-gold">Gitonga</span> Mukunji
           </a>
 
           <button
@@ -240,7 +240,7 @@ export default function Navbar() {
               scrolled ? "text-charcoal" : "text-white"
             }`}
           >
-            <span className="text-gold">G.</span> Mukunji
+            <span className="text-gold">Gitonga</span> Mukunji
           </a>
 
           <ul className="flex items-center gap-10">
