@@ -1,5 +1,8 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+
 interface GalleryPhoto {
   id: string;
   src: string;
@@ -58,6 +61,24 @@ function PhotoCard({ photo }: { photo: GalleryPhoto }) {
 }
 
 export default function GallerySection({ photos }: GallerySectionProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [slideWidth, setSlideWidth] = useState(0);
+
+  useEffect(() => {
+    const calc = () => setSlideWidth(window.innerWidth * 0.8 + 16);
+    calc();
+    window.addEventListener("resize", calc);
+    return () => window.removeEventListener("resize", calc);
+  }, []);
+
+  const goTo = (target: number | "next" | "prev") => {
+    setCurrentIndex((prev) => {
+      const len = photos.length;
+      if (target === "next") return (prev + 1) % len;
+      if (target === "prev") return (prev - 1 + len) % len;
+      return (target + len) % len;
+    });
+  };
   return (
     <section id="ground" className="border-t border-stone bg-pearl">
       <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
@@ -73,16 +94,45 @@ export default function GallerySection({ photos }: GallerySectionProps) {
           </p>
         </div>
 
-        {/* MOBILE: horizontal swipe carousel */}
-        <p className="mb-3 text-right text-[10px] uppercase tracking-widest text-muted/50 sm:hidden">
-          Swipe &rarr;
-        </p>
-        <div className="flex gap-4 overflow-x-auto pb-4 sm:hidden snap-x snap-proximity scroll-smooth" style={{ WebkitOverflowScrolling: "touch" }}>
-          {photos.map((photo) => (
-            <div key={photo.id} className="w-[80vw] shrink-0 snap-start">
-              <PhotoCard photo={photo} />
-            </div>
-          ))}
+        {/* MOBILE: drag carusel with wrap-around */}
+        <div className="pb-4 sm:hidden">
+          <div className="relative overflow-hidden">
+            <motion.div
+              className="flex gap-4 cursor-grab active:cursor-grabbing"
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.6}
+              onDragEnd={(_, info) => {
+                const swipe = info.offset.x;
+                if (swipe < -60) {
+                  goTo("next");
+                } else if (swipe > 60) {
+                  goTo("prev");
+                }
+              }}
+              animate={{ x: -currentIndex * slideWidth }}
+              transition={{ type: "spring", stiffness: 350, damping: 35, mass: 0.8 }}
+            >
+              {photos.map((photo) => (
+                <div key={photo.id} className="w-[80vw] shrink-0">
+                  <PhotoCard photo={photo} />
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          <div className="mt-5 flex items-center justify-center gap-2">
+            {photos.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => goTo(i)}
+                className={`h-1.5 rounded-full transition-all duration-500 ${
+                  i === currentIndex ? "w-6 bg-gold" : "w-1.5 bg-charcoal/20"
+                }`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* DESKTOP: masonry */}
