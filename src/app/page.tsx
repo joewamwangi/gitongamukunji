@@ -184,6 +184,8 @@ export default function Home() {
         />
       </div>
 
+      <SectionDivider />
+
       <div className="snap-section">
         <RecordSection stats={stats} mobileBgImage="/images/record-mobile.jpg" />
       </div>
