@@ -90,18 +90,17 @@ export default function GallerySectionCopy2({ photos }: GallerySectionProps) {
   };
 
   return (
-    <section id="next-section" className="bg-pearl">
+    <section id="economy" className="bg-pearl">
       <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
         <div className="mb-10 sm:mb-14">
           <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-charcoal sm:text-5xl lg:text-6xl">
-            <strong className="text-gold">Education;</strong>{" "}
-            <span className="underline decoration-gold/60 underline-offset-4">Building <em className="italic text-gold">&ldquo;Human&rdquo;</em> Capital</span>
+            <strong className="text-gold">Economy;</strong> Protect Yields &amp; Better Infrastructure
           </h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-            &ldquo;It is a crisis. Whenever we have a crisis, we should always come together, offer solutions, and see how we can handle it best.&rdquo;
+            &ldquo;Kenyans cannot afford basic needs and are facing challenges in service delivery. We must make sure our sovereign funds are safeguarded.&rdquo;
           </p>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-            Education cannot be a commodity; it is a basic right and a social good that helps us develop a better county and a prosperous nation.
+            An economy cannot grow if its producers are suppressed by policy or blocked by stalled networks. True economic independence means shifting from punitive taxes to high-yield agricultural protection, secured by an uncompromised, transparently funded infrastructure network.
           </p>
         </div>
 
