@@ -176,9 +176,13 @@ export default function Home() {
       />
       </div>
 
+      <SectionDivider />
+
       <div className="snap-section">
         <GallerySection photos={galleryPhotos} />
       </div>
+
+      <SectionDivider />
 
       <div className="snap-section">
         <VideoSection videos={videos} />
