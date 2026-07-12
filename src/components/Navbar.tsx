@@ -89,7 +89,11 @@ export default function Navbar() {
               setOpen(!open);
               setActiveIndex(null);
             }}
-            className="relative z-50 flex h-11 w-11 items-center justify-center rounded-sm active:scale-95"
+            className={`relative z-50 flex h-11 w-11 items-center justify-center rounded-sm border transition-all active:scale-95 ${
+              scrolled
+                ? "border-stone bg-pearl-light text-charcoal hover:border-gold"
+                : "border-white/30 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20"
+            }`}
             aria-label={open ? "Close menu" : "Open menu"}
           >
             {open ? (
@@ -243,15 +247,15 @@ export default function Navbar() {
             <span className="text-gold">Gitonga</span> Mukunji
           </a>
 
-          <ul className="flex items-center gap-10">
+          <ul className="flex items-center gap-3">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className={`text-sm font-medium uppercase tracking-widest transition-colors ${
+                  className={`inline-block rounded-sm border px-4 py-2 text-sm font-medium uppercase tracking-widest transition-all ${
                     scrolled
-                      ? "text-muted hover:text-gold-dark"
-                      : "text-white/70 hover:text-white"
+                      ? "border-gold/30 text-gold-dark hover:bg-gold hover:text-white hover:border-gold"
+                      : "border-white/30 text-white/80 hover:bg-white hover:text-charcoal"
                   }`}
                 >
                   {link.label}
