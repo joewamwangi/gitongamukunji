@@ -40,7 +40,7 @@ export default function Hero({
   const morphProgress = useTransform(scrollYProgress, [0, 0.3, 0.6], [0, 0.5, 1]);
   const showVideo = useTransform(scrollYProgress, [0.5, 0.7], [0, 1]);
 
-  const slides = mobileImages.slice(0, 6);
+  const slides = mobileImages.slice(0, 8);
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
