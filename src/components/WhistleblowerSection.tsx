@@ -17,16 +17,14 @@ export default function WhistleblowerSection() {
     <section id="voice" className="border-t border-stone bg-white">
       <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
         <div className="mb-14 sm:mb-20">
-          <p className="mb-3 font-display text-xs font-light uppercase tracking-[0.25em] text-gold">
-            Chapter 05
-          </p>
           <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-charcoal sm:text-5xl lg:text-6xl">
-            Your Voice
+            Your Voice; Talk to us &amp; let us know
           </h2>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            See something that needs fixing? Know about an issue that&apos;s being
-            ignored? This is a direct, confidential channel &mdash; no names
-            required, no backlash. Every submission is reviewed.
+            My office acknowledges that it might miss on several issues that exist on some parts of its&apos; legislative area, and therefore bestows this tool upon you to be our eyes, ears and voice as you interact with the people, businesses and institutions around you!
+          </p>
+          <p className="mt-3 text-sm font-semibold tracking-wide text-gold-dark">
+            #SemaUsikike #TuzidiKujituma
           </p>
         </div>
 
