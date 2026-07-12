@@ -94,7 +94,8 @@ export default function GallerySection({ photos }: GallerySectionProps) {
       <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
         <div className="mb-10 sm:mb-14">
           <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-charcoal sm:text-5xl lg:text-6xl">
-            Youth; The &ldquo;Now&rdquo; Economy
+            <strong className="text-gold">Youth ;</strong>{" "}
+            <span className="underline decoration-gold/60 underline-offset-4">The <em className="italic text-gold">&ldquo;Now&rdquo;</em> Economy</span>
           </h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
             &ldquo;We must advocate and recognize the importance of young people in governance and political processes!&rdquo;
