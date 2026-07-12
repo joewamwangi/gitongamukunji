@@ -150,8 +150,8 @@ function YouTubeCard({ video, index }: { video: VideoItem; index: number }) {
       </div>
 
       <div className={`flex-1 ${isReversed ? "md:text-right" : ""}`}>
-        <p className="mb-2 text-xs uppercase tracking-[0.2em] text-gold-dark">
-          {video.date}{video.source ? ` \u2014 ${video.source}` : ""}
+        <p className="mb-2 inline-block rounded-sm bg-gold/10 px-2 py-0.5 text-xs uppercase tracking-[0.2em] text-gold-dark">
+          {video.date}{video.source ? ` — ${video.source}` : ""}
         </p>
         <h3 className="font-display text-2xl leading-tight text-charcoal">
           {video.title}
