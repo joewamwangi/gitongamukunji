@@ -149,7 +149,7 @@ export default function Navbar() {
                           className={`font-display text-2xl tracking-tight transition-colors duration-300 ${
                             activeIndex === i
                               ? "text-charcoal"
-                              : "text-charcoal/40 hover:text-charcoal/70"
+                              : "text-charcoal/65 hover:text-charcoal/85"
                           }`}
                         >
                           {group.label}
@@ -187,7 +187,7 @@ export default function Navbar() {
                             transition={{ duration: 0.3, ease: "easeOut" }}
                             className="overflow-hidden"
                           >
-                            <p className="pl-5 pt-1.5 text-[11px] leading-relaxed text-muted/80">
+                            <p className="pl-5 pt-1.5 text-[11px] leading-relaxed text-charcoal/70">
                               {group.subtitle}
                             </p>
 
