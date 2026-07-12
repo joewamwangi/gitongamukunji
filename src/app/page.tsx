@@ -178,7 +178,7 @@ export default function Home() {
           name="Gitonga Mukunji"
           title="MP, Manyatta Constituency"
           tagline="I will not be intimidated because I will continue defending my people!"
-          ctaLabel="#Form_Ni_Kujituma"
+          ctaLabel="#FormNiKujituma"
           ctaHref="#record"
         />
       </div>

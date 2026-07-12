@@ -94,7 +94,7 @@ export default function Hero({
 
           <a
             href={ctaHref}
-            className="inline-flex h-12 w-full items-center justify-center rounded-sm bg-gold px-6 text-center font-display text-base font-bold tracking-wide text-charcoal shadow-lg active:scale-[0.97]"
+            className="inline-flex h-10 items-center justify-center rounded-sm bg-gold px-5 text-center font-display text-sm font-bold tracking-wide text-charcoal shadow-lg active:scale-[0.97] w-fit"
           >
             {ctaLabel}
           </a>
@@ -202,7 +202,7 @@ export default function Hero({
           >
             <a
               href={ctaHref}
-              className="inline-flex h-14 min-h-[56px] items-center justify-center rounded-sm bg-charcoal px-10 text-center font-display text-xl font-bold tracking-wide text-white shadow-lg transition-all hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-charcoal"
+              className="inline-flex h-12 min-h-[48px] items-center justify-center rounded-sm bg-charcoal px-8 text-center font-display text-lg font-bold tracking-wide text-white shadow-lg transition-all hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-charcoal"
             >
               {ctaLabel}
             </a>
