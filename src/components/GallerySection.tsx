@@ -148,6 +148,18 @@ export default function GallerySection({ photos }: GallerySectionProps) {
           </div>
         </div>
 
+        <div className="mt-8 flex justify-center sm:hidden">
+          <a
+            href="/youth"
+            className="inline-flex h-12 items-center gap-2 rounded-sm border border-gold bg-transparent px-8 font-display text-sm font-bold uppercase tracking-widest text-gold transition-all hover:bg-gold hover:text-charcoal active:scale-[0.97]"
+          >
+            Read More
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
         {/* DESKTOP: masonry */}
         <div className="hidden columns-2 gap-4 sm:columns-3 lg:columns-4 sm:block">
           {photos.map((photo) => (
@@ -155,6 +167,18 @@ export default function GallerySection({ photos }: GallerySectionProps) {
               <PhotoCard photo={photo} />
             </div>
           ))}
+        </div>
+
+        <div className="mt-10 hidden justify-center sm:flex">
+          <a
+            href="/youth"
+            className="inline-flex h-12 items-center gap-2 rounded-sm border border-gold bg-transparent px-8 font-display text-sm font-bold uppercase tracking-widest text-gold transition-all hover:bg-gold hover:text-charcoal"
+          >
+            Read More
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
         </div>
       </div>
     </section>
