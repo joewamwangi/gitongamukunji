@@ -94,14 +94,14 @@ export default function GallerySectionCopy({ photos }: GallerySectionProps) {
       <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
         <div className="mb-10 sm:mb-14">
           <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-charcoal sm:text-5xl lg:text-6xl">
-            <strong className="text-gold">Youth ;</strong>{" "}
-            <span className="underline decoration-gold/60 underline-offset-4">The <em className="italic text-gold">&ldquo;Now&rdquo;</em> Economy</span>
+            <strong className="text-gold">Education;</strong>{" "}
+            <span className="underline decoration-gold/60 underline-offset-4">Building <em className="italic text-gold">&ldquo;Human&rdquo;</em> Capital</span>
           </h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-            &ldquo;We must advocate and recognize the importance of young people in governance and political processes!&rdquo;
+            &ldquo;It is a crisis. Whenever we have a crisis, we should always come together, offer solutions, and see how we can handle it best.&rdquo;
           </p>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-            With a deeply personal advocacy for youth empowerment as a practical blueprint for economic growth, I firmly believe that when young people are given technical tools instead of symbolic tokens, they thrive&mdash;and are set on a path of self-reliance and raw innovation.
+            Education cannot be a commodity; it is a basic right and a social good that helps us develop a better county and a prosperous nation.
           </p>
         </div>
 
