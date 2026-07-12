@@ -8,6 +8,7 @@ interface GalleryPhoto {
   caption: string;
   location: string;
   date: string;
+  href?: string;
 }
 
 interface GallerySectionProps {
@@ -17,7 +18,7 @@ interface GallerySectionProps {
 function PhotoCard({ photo }: { photo: GalleryPhoto }) {
   const [tapped, setTapped] = useState(false);
 
-  return (
+  const content = (
     <div
       className="group relative cursor-pointer overflow-hidden rounded-sm bg-white shadow-sm"
       onClick={() => setTapped((p) => !p)}
@@ -53,22 +54,31 @@ function PhotoCard({ photo }: { photo: GalleryPhoto }) {
       </div>
     </div>
   );
+
+  if (photo.href) {
+    return (
+      <a href={photo.href} target="_blank" rel="noopener noreferrer">
+        {content}
+      </a>
+    );
+  }
+
+  return content;
 }
 
 export default function GallerySection({ photos }: GallerySectionProps) {
   return (
     <section id="ground" className="border-t border-stone bg-pearl">
       <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
-        <div className="mb-14 sm:mb-20">
-          <p className="mb-3 font-display text-xs font-light uppercase tracking-[0.25em] text-gold">
-            Chapter 02
-          </p>
+        <div className="mb-10 sm:mb-14">
           <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-charcoal sm:text-5xl lg:text-6xl">
-            On the Ground
+            Youth; The &ldquo;Now&rdquo; Economy
           </h2>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            Real moments from across Manyatta. No staging, no filters &mdash; just the
-            work and the people it serves.
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+            &ldquo;We must advocate and recognize the importance of young people in governance and political processes!&rdquo;
+          </p>
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+            With a deeply personal advocacy for youth empowerment as a practical blueprint for economic growth, I firmly believe that when young people are given technical tools instead of symbolic tokens, they thrive&mdash;and are set on a path of self-reliance and raw innovation.
           </p>
         </div>
 
