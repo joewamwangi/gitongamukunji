@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
 interface GalleryPhoto {
   id: string;
   src: string;
@@ -16,18 +14,9 @@ interface GallerySectionProps {
 }
 
 function PhotoCard({ photo }: { photo: GalleryPhoto }) {
-  const [tapped, setTapped] = useState(false);
-
   const content = (
     <div
       className="group relative cursor-pointer overflow-hidden rounded-sm bg-white shadow-sm"
-      onClick={() => setTapped((p) => !p)}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          setTapped((p) => !p);
-        }
-      }}
       tabIndex={0}
       role="button"
       aria-label={`Photo: ${photo.caption}`}
@@ -38,13 +27,7 @@ function PhotoCard({ photo }: { photo: GalleryPhoto }) {
         loading="lazy"
         className="w-full object-cover transition-all duration-700 group-hover:scale-105 group-focus-visible:scale-105"
       />
-      <div
-        className={`pointer-events-none absolute inset-0 scrim-gallery p-4 flex flex-col justify-end transition-opacity duration-300 ${
-          tapped
-            ? "opacity-100"
-            : "opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100"
-        }`}
-      >
+      <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent p-4 flex flex-col justify-end">
         <p className="text-sm font-medium leading-snug text-white">
           {photo.caption}
         </p>
