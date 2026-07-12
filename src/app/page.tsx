@@ -129,11 +129,12 @@ const videos = [
     youtubeId: "dAYnY1gjP-o",
     src: "/videos/placeholder-video-1.mp4",
     poster: "/images/placeholder-video-poster-1.jpg",
-    title: "On youth unemployment — unscripted",
+    title: "Finance Bill, Parliamentary Proceedings, Political Trajectory",
     description:
-      "A young constituent asks about job creation. Mukunji responds, no script, no spin. Recorded at a town hall in Manyatta.",
-    location: "Manyatta Town Hall",
-    date: "Jan 2025",
+      "Mukunji explains his consistent \u201cNo\u201d vote on recent finance bills, arguing that they do not serve the interests of the common Kenyan.",
+    location: "NTV Kenya",
+    date: "Tuesday, Jun 22, 2026",
+    source: "on NTV\u2019s #FixingTheNationNTV",
   },
   {
     src: "/videos/placeholder-video-2.mp4",

@@ -11,6 +11,7 @@ interface VideoItem {
   location?: string;
   date?: string;
   youtubeId?: string;
+  source?: string;
 }
 
 interface VideoSectionProps {
@@ -150,7 +151,7 @@ function YouTubeCard({ video, index }: { video: VideoItem; index: number }) {
 
       <div className={`flex-1 ${isReversed ? "md:text-right" : ""}`}>
         <p className="mb-2 text-xs uppercase tracking-[0.2em] text-gold-dark">
-          {video.date && `${video.date} — `}Press Release
+          {video.date}{video.source ? ` \u2014 ${video.source}` : ""}
         </p>
         <h3 className="font-display text-2xl leading-tight text-charcoal">
           {video.title}
@@ -278,14 +279,11 @@ export default function VideoSection({ videos }: VideoSectionProps) {
     <section className="border-t border-stone bg-pearl">
       <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
         <div className="mb-14 sm:mb-20">
-          <p className="mb-3 font-display text-xs font-light uppercase tracking-[0.25em] text-gold">
-            Chapter 04
-          </p>
           <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-charcoal sm:text-5xl lg:text-6xl">
             Press Releases, Blogs &amp; Posts
           </h2>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            Stay informed with the latest press releases, blog posts, and media updates from the office of Gitonga Mukunji.
+            Stay informed with the latest press releases, blog posts, and media updates from the office of <strong className="font-bold text-gold">Gitonga Mukunji</strong>.
           </p>
         </div>
 
