@@ -150,19 +150,19 @@ const videos = [
 ];
 
 const socialFeeds = [
-  { platform: "facebook" as const, label: "Facebook", href: "#", isLive: false },
-  { platform: "x" as const, label: "X (Twitter)", href: "#", isLive: false },
-  { platform: "instagram" as const, label: "Instagram", href: "#", isLive: false },
-  { platform: "tiktok" as const, label: "TikTok", href: "#", isLive: false },
-  { platform: "youtube" as const, label: "YouTube", href: "#", isLive: false },
+  { platform: "facebook" as const, label: "Facebook", href: "https://www.facebook.com/GitongaMukunji/", isLive: false },
+  { platform: "x" as const, label: "X (Twitter)", href: "https://x.com/Gitonga_Mukunji?lang=en", isLive: false },
+  { platform: "instagram" as const, label: "Instagram", href: "https://www.instagram.com/gitongamukunji/?hl=en", isLive: false },
+  { platform: "tiktok" as const, label: "TikTok", href: "https://www.tiktok.com/@gitonga_mukunji", isLive: false },
+  { platform: "youtube" as const, label: "YouTube", href: "https://youtube.com", isLive: false },
 ];
 
 const footerLinks = [
-  { label: "X", href: "#" },
-  { label: "Instagram", href: "#" },
-  { label: "Facebook", href: "#" },
-  { label: "YouTube", href: "#" },
-  { label: "TikTok", href: "#" },
+  { label: "X", href: "https://x.com/Gitonga_Mukunji?lang=en" },
+  { label: "Instagram", href: "https://www.instagram.com/gitongamukunji/?hl=en" },
+  { label: "Facebook", href: "https://www.facebook.com/GitongaMukunji/" },
+  { label: "YouTube", href: "https://youtube.com" },
+  { label: "TikTok", href: "https://www.tiktok.com/@gitonga_mukunji" },
   { label: "WhatsApp", href: "#" },
 ];
 
