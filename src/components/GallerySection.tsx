@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface GalleryPhoto {
   id: string;
@@ -62,23 +62,33 @@ function PhotoCard({ photo }: { photo: GalleryPhoto }) {
 
 export default function GallerySection({ photos }: GallerySectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [slideWidth, setSlideWidth] = useState(0);
-
-  useEffect(() => {
-    const calc = () => setSlideWidth(window.innerWidth * 0.8 + 16);
-    calc();
-    window.addEventListener("resize", calc);
-    return () => window.removeEventListener("resize", calc);
-  }, []);
+  const [direction, setDirection] = useState(0);
+  const touchX = useRef(0);
+  const animating = useRef(false);
 
   const goTo = (target: number | "next" | "prev") => {
-    setCurrentIndex((prev) => {
-      const len = photos.length;
-      if (target === "next") return (prev + 1) % len;
-      if (target === "prev") return (prev - 1 + len) % len;
-      return (target + len) % len;
-    });
+    if (animating.current) return;
+    animating.current = true;
+    const len = photos.length;
+    if (target === "next") {
+      setDirection(1);
+      setCurrentIndex((prev) => (prev + 1) % len);
+    } else if (target === "prev") {
+      setDirection(-1);
+      setCurrentIndex((prev) => (prev - 1 + len) % len);
+    } else {
+      setDirection(target > currentIndex ? 1 : -1);
+      setCurrentIndex((target + len) % len);
+    }
+    setTimeout(() => { animating.current = false; }, 400);
   };
+
+  const variants = {
+    enter: (dir: number) => ({ x: dir > 0 ? 200 : -200, opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (dir: number) => ({ x: dir > 0 ? -200 : 200, opacity: 0 }),
+  };
+
   return (
     <section id="ground" className="border-t border-stone bg-pearl">
       <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
@@ -94,31 +104,33 @@ export default function GallerySection({ photos }: GallerySectionProps) {
           </p>
         </div>
 
-        {/* MOBILE: drag carusel with wrap-around */}
+        {/* MOBILE: swipe carusel */}
         <div className="pb-4 sm:hidden">
-          <div className="relative overflow-hidden">
-            <motion.div
-              className="flex gap-4 cursor-grab active:cursor-grabbing"
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.6}
-              onDragEnd={(_, info) => {
-                const swipe = info.offset.x;
-                if (swipe < -60) {
-                  goTo("next");
-                } else if (swipe > 60) {
-                  goTo("prev");
-                }
-              }}
-              animate={{ x: -currentIndex * slideWidth }}
-              transition={{ type: "spring", stiffness: 350, damping: 35, mass: 0.8 }}
-            >
-              {photos.map((photo) => (
-                <div key={photo.id} className="w-[80vw] shrink-0">
-                  <PhotoCard photo={photo} />
-                </div>
-              ))}
-            </motion.div>
+          <div
+            className="relative overflow-hidden"
+            onTouchStart={(e) => { touchX.current = e.touches[0].clientX; }}
+            onTouchEnd={(e) => {
+              if (animating.current) return;
+              const diff = touchX.current - e.changedTouches[0].clientX;
+              if (diff > 50) goTo("next");
+              else if (diff < -50) goTo("prev");
+            }}
+          >
+            <div className="w-[80vw] mx-auto">
+              <AnimatePresence mode="popLayout" custom={direction}>
+                <motion.div
+                  key={currentIndex}
+                  custom={direction}
+                  variants={variants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                >
+                  <PhotoCard photo={photos[currentIndex]} />
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
 
           <div className="mt-5 flex items-center justify-center gap-2">
