@@ -119,7 +119,7 @@ function YouTubeCard({ video, index }: { video: VideoItem; index: number }) {
         isReversed ? "md:flex-row-reverse" : ""
       }`}
     >
-      <div className="relative aspect-[9/16] w-full max-w-sm shrink-0 overflow-hidden rounded-sm bg-charcoal shadow-lg">
+      <div className="relative aspect-video w-full max-w-lg shrink-0 overflow-hidden rounded-sm bg-charcoal shadow-lg">
         <div id={`yt-player-${index}`} className="h-full w-full" />
 
         <div className="absolute bottom-3 left-3 flex items-center gap-2">
