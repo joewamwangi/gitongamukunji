@@ -90,7 +90,7 @@ export default function GallerySection({ photos }: GallerySectionProps) {
   };
 
   return (
-    <section id="ground" className="border-t border-stone bg-pearl">
+    <section id="ground" className="bg-pearl">
       <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
         <div className="mb-10 sm:mb-14">
           <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-charcoal sm:text-5xl lg:text-6xl">
