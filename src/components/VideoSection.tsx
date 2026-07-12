@@ -11,6 +11,7 @@ interface VideoItem {
   location?: string;
   date?: string;
   youtubeId?: string;
+  facebookUrl?: string;
   source?: string;
 }
 
@@ -167,6 +168,73 @@ function YouTubeCard({ video, index }: { video: VideoItem; index: number }) {
   );
 }
 
+function FacebookCard({ video, index }: { video: VideoItem; index: number }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { rootMargin: "-80px 0px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const embedSrc = `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(video.facebookUrl!)}&show_text=false&width=734&autoplay=1`;
+
+  const isReversed = index % 2 !== 0;
+
+  return (
+    <motion.div
+      ref={containerRef}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.7 }}
+      className={`flex flex-col gap-8 md:flex-row md:items-center ${
+        isReversed ? "md:flex-row-reverse" : ""
+      }`}
+    >
+      <div className="relative aspect-video w-full max-w-lg shrink-0 overflow-hidden rounded-sm bg-charcoal shadow-lg">
+        {inView ? (
+          <iframe
+            src={embedSrc}
+            className="h-full w-full"
+            allow="autoplay; encrypted-media"
+            style={{ border: "none", overflow: "hidden" }}
+            scrolling="no"
+            allowFullScreen
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center bg-charcoal/50">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" className="text-white/40">
+              <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" />
+            </svg>
+          </div>
+        )}
+      </div>
+
+      <div className={`flex-1 ${isReversed ? "md:text-right" : ""}`}>
+        <p className="mb-2 inline-block rounded-sm bg-gold/10 px-2 py-0.5 text-xs uppercase tracking-[0.2em] text-gold-dark">
+          {video.date}{video.source ? ` — ${video.source}` : ""}
+        </p>
+        <h3 className="font-display text-2xl leading-tight text-charcoal">
+          {video.title}
+        </h3>
+        <p className="mt-4 max-w-md text-base leading-relaxed text-muted">
+          {video.description}
+        </p>
+        {video.location && (
+          <p className="mt-3 text-sm text-muted/60">{video.location}</p>
+        )}
+      </div>
+    </motion.div>
+  );
+}
+
 function VideoCard({ video, index }: { video: VideoItem; index: number }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -301,6 +369,8 @@ export default function VideoSection({ videos }: VideoSectionProps) {
               )}
               {video.youtubeId ? (
                 <YouTubeCard video={video} index={i} />
+              ) : video.facebookUrl ? (
+                <FacebookCard video={video} index={i} />
               ) : (
                 <VideoCard video={video} index={i} />
               )}

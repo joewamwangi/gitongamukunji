@@ -137,13 +137,15 @@ const videos = [
     source: "on NTV\u2019s #FixingTheNationNTV",
   },
   {
+    facebookUrl: "https://www.facebook.com/GitongaMukunji/videos/documentary-the-price-of-representationpremieres-wednesday-8th-july-2026tomorrow/1585282613271151/",
     src: "/videos/placeholder-video-2.mp4",
     poster: "/images/placeholder-video-poster-2.jpg",
-    title: "Bursary day — the real work",
+    title: "The Price of Representation",
     description:
-      "Behind the scenes at a bursary disbursement. No staging, just the queue, the families, and the process.",
-    location: "Embu Town",
-    date: "Feb 2025",
+      "Don\u2019t miss this compelling story of leadership, conviction and the cost of public service.",
+    location: "Documentary Film",
+    date: "Wednesday 8th July, 2026",
+    source: "Documentary Premier",
   },
   {
     src: "/videos/placeholder-video-3.mp4",
