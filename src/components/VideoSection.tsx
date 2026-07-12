@@ -170,7 +170,9 @@ function YouTubeCard({ video, index }: { video: VideoItem; index: number }) {
 
 function FacebookCard({ video, index }: { video: VideoItem; index: number }) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const [inView, setInView] = useState(false);
+  const [userPlayed, setUserPlayed] = useState(false);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -183,7 +185,13 @@ function FacebookCard({ video, index }: { video: VideoItem; index: number }) {
     return () => observer.disconnect();
   }, []);
 
-  const embedSrc = `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(video.facebookUrl!)}&show_text=false&width=734&autoplay=1`;
+  useEffect(() => {
+    if (!inView && userPlayed) {
+      setUserPlayed(false);
+    }
+  }, [inView, userPlayed]);
+
+  const embedSrc = `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(video.facebookUrl!)}&show_text=0&width=734`;
 
   const isReversed = index % 2 !== 0;
 
@@ -199,21 +207,29 @@ function FacebookCard({ video, index }: { video: VideoItem; index: number }) {
       }`}
     >
       <div className="relative aspect-video w-full max-w-lg shrink-0 overflow-hidden rounded-sm bg-charcoal shadow-lg">
-        {inView ? (
+        {userPlayed ? (
           <iframe
+            ref={iframeRef}
             src={embedSrc}
             className="h-full w-full"
-            allow="autoplay; encrypted-media"
+            allow="autoplay; encrypted-media; picture-in-picture"
             style={{ border: "none", overflow: "hidden" }}
             scrolling="no"
             allowFullScreen
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center bg-charcoal/50">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" className="text-white/40">
-              <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" />
-            </svg>
-          </div>
+          <button
+            onClick={() => setUserPlayed(true)}
+            className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-charcoal/60 transition-colors hover:bg-charcoal/40"
+            aria-label="Play video"
+          >
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gold shadow-lg transition-transform hover:scale-105">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="ml-0.5 text-charcoal">
+                <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" />
+              </svg>
+            </div>
+            <span className="text-xs uppercase tracking-[0.15em] text-white/80">Click to watch</span>
+          </button>
         )}
       </div>
 
